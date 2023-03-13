@@ -1,0 +1,55 @@
+ button{
+    margin-left: 10px; 
+ }
+ .rounded-card {
+    border-radius: 5px; /* change the value to adjust the rounding */
+    padding: 16px; /* adds some padding to the card */
+    margin: 16px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+  }
+ .button-group {
+    display: flex;
+    align-items:self-start;
+    float: right;
+  }
+  .icon-button-demo {
+    margin-left: 10px;
+  } 
+  .button {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 8px;
+  }
+
+  #pTable{
+    padding: 100px;
+  }
+  .table-card {
+    border-radius: 5px; /* sets the border radius to make it round */
+    padding: 16px; /* adds some padding to the card */
+    margin: 16px; /* adds some margin around the card */
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3); /* adds a shadow to the card */
+  }
+  .active {
+    background-color: #f5f5f5;
+  }
+/* Adjust the width of the checkbox column */
+.mat-column-select {
+    flex: 0 0 100px; /* Change the width to your desired value */
+  }
+  
+  /* Adjust the width of the other columns */
+  .mat-cell {
+    flex: 0 1 10px; /* Change the width to your desired value */
+  }
+  
+  /* Add a margin to the last column */
+  .mat-column-email {
+    margin-right: 0px; /* Change the margin to your desired value */
+  }
+ 
+  
+  
+  
+  
+  
