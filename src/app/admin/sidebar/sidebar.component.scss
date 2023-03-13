@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Roboto:ital@1&family=Rubik:ital,wght@1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Icons');
+
+*{
+    font-family: sans-serif;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+mat-icon{
+    color:black;
+    font-family: 'Material Icons';
+     vertical-align: middle;
+}
+.top{
+  margin-top: 15px;
+  padding: 8px;
+  margin-left: 190px;
+  font-size: 30px;
+}
+.user{
+  text-align: center;
+  font-weight: 800;
+  margin-bottom: 50px;
+
+  img{
+    margin-top: 16px;
+    width: 120px;
+    height: 120px;
+}
+.name{
+color: white;
+}
+
+.mail{
+    margin-top: -16px;
+    color: beige;
+}
+}
+.menu-head{
+  color:rgb(2, 12, 21);
+  text-transform: uppercase;
+  font-weight: 900;
+  margin-left: 40px;
+  margin-bottom: 15px;
+}
+.menu-item{
+
+  margin: 0 10px o 10px;
+  .menu-button{
+    display: block;
+    width: 100%;
+    position: relative;
+    display: flex;
+    padding-left: 40px;
+    margin-bottom: 10px;
+  }
+  .menu-button span{
+    margin-left: 15px;
+    color:white;
+
+  }
+  .menu-button:hover{
+    background-color: rgb(23, 203, 203);
+  }
+  .menu-button:focus{
+    background-color: rgb(30, 212, 212);
+  }
+}
+
