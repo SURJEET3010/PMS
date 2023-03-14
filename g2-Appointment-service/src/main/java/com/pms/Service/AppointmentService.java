@@ -16,13 +16,14 @@ public class AppointmentService {
 		@Autowired
 		private AppointmentRepository appointmentrepository;
 		
+		//for adding
 		public Appointment saveDetails(Appointment appointment) {
 			
 			  return appointmentrepository.save(appointment);
 		}
 			  
 		
-		
+		//for delete
 		public boolean deleteDetails(Long appointmentId) {
 			boolean bool = appointmentrepository.existsById(appointmentId);
 			
@@ -37,7 +38,7 @@ public class AppointmentService {
 		}
 		
 		
-		
+		//for updating
 		public Appointment updateDetails(Appointment appointment ,Long appointmentId) {
 			Appointment app =	appointmentrepository.findById(appointmentId).orElse(null);	
 			app.setAcceptance(appointment.getAcceptance());
@@ -49,7 +50,7 @@ public class AppointmentService {
 			
 			}
 		
-		
+		//for fetching with patiendId , only for patient
 		public List<Appointment> getAppointment(int patientId) {
 			List<Appointment> appointment = null;
 
@@ -63,7 +64,7 @@ public class AppointmentService {
 			return appointment;
 		}
 		
-
+		//for fetching with physicianEmail and acceptance and date , only for physician
 		public List<Appointment> showAvailability(String physicianEmail , String date , String acceptance) {
 			List<Appointment> app = null;
 
@@ -79,7 +80,7 @@ public class AppointmentService {
 		
 
 		
-		
+		//for fetching with acceptance , only for nurse
 		public List<Appointment> showAppointment(String acceptance) {
 			List<Appointment> app = null;
 
@@ -93,6 +94,8 @@ public class AppointmentService {
 			return app;
 		}
 		
+		
+		//for fetching with physicianEmail and acceptance , only for physician
 		public List<Appointment> showAppointmentByRejected(String physicianEmail ,String acceptance) {
 			List<Appointment> app = null;
 

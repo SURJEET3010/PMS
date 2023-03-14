@@ -24,7 +24,7 @@ public class AppointmentController {
 		private AppointmentService appointmentservice;
 		
 		
-		
+		//add to appointment , acceptance default to pending
 		@PostMapping("/appointment")
 		public ResponseEntity<Appointment> saveDetails(@RequestBody Appointment appointment){
 			Appointment app = null;
@@ -39,7 +39,7 @@ public class AppointmentController {
 			}
 		}
 		
-		
+		//delete with appointmentID, only for patient to delete appointment
 		@DeleteMapping("/appointment/{appointmentId}")
 		public ResponseEntity<Void> deleteDetails(@PathVariable("appointmentId") Long appointmentId) {
 			boolean bool=false;
@@ -56,11 +56,10 @@ public class AppointmentController {
 				e.printStackTrace();
 				return ResponseEntity.status(HttpStatus.valueOf(500)).build();
 			}
-
 		}
 
 		
-		
+		//update with appointmentId,only for physician
 		@PutMapping("/appointment/{appointmentId}")
 		public ResponseEntity<Appointment> updateDetails(@RequestBody Appointment appointment , @PathVariable("appointmentId") Long appointmentId) {
 			Appointment app = null;
@@ -77,20 +76,16 @@ public class AppointmentController {
 					 return ResponseEntity.status(HttpStatusCode.valueOf(401)).build();
 				 }
 				 
-
 			} catch (Exception e) {
 				e.printStackTrace();
 				return ResponseEntity.status(HttpStatusCode.valueOf(401)).build();
 			}
-
-		
-		
 		}
 		
 		
 		
 		
-		//fetch all appointments with physicianEmail and acceptance and appointmentDate
+		//fetch all appointments with physicianEmail and acceptance and appointmentDate , only for doctor
 		@GetMapping("/appointment/{physicianEmail}")
 		public ResponseEntity<List<Appointment>> showAvailabilityByDate(@PathVariable("physicianEmail") String physicianEmail ,
 				@RequestParam( value="acceptance") String acceptance,
@@ -106,7 +101,7 @@ public class AppointmentController {
 		
 		
 		
-		//fetch all patients with patientsId
+		//fetch all patients with patientsId , only for patient
 		@GetMapping("/patient/{patientId}")
 		public ResponseEntity<List<Appointment>> showAvailability(@PathVariable("patientId") int patientId) {
 			List<Appointment> list = appointmentservice.getAppointment(patientId);
@@ -117,7 +112,7 @@ public class AppointmentController {
 			return ResponseEntity.ok().body(list);
 		}
 		
-		//fetch all appointments with acceptance
+		//fetch all appointments with acceptance , only for nurse
 		@GetMapping("/appointment")
 		public ResponseEntity<List<Appointment>> findByAcceptance(@RequestParam( value="acceptance") String acceptance){
 			List<Appointment> list = appointmentservice.showAppointment(acceptance);
@@ -129,7 +124,7 @@ public class AppointmentController {
 		}
 		
 		
-		//fetch all appointments with physicianEmail and acceptance
+		//fetch all appointments with physicianEmail and acceptance , only for physician 
 		@GetMapping("/appointments/{physicianEmail}")
 		public ResponseEntity<List<Appointment>> showAvailabilityByPending(@PathVariable("physicianEmail") String physicianEmail ,
 				@RequestParam( value="acceptance") String acceptance) {

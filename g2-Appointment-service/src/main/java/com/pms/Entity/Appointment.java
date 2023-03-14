@@ -10,7 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-	
+// Use database appointment_db;	
 @Entity
 @Data // gives all lombok
 @Table(name = "appointment")
