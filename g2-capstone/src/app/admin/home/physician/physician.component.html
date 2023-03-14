@@ -1,9 +1,13 @@
   <mat-card class="rounded-card">
     <mat-card-content class="card-content">
-      All Doctors
-      <mat-form-field appearance="fill" class="search-box">
-        <mat-label>Search Something</mat-label>
-        <input type="text" matInput placeholder="Type something..">
+     <!-- <b> Doctors</b> -->
+     <mat-card-title>
+       All Doctors
+    </mat-card-title>
+
+      <mat-form-field appearance="outline" class="search-box">
+        <!-- <mat-label>Search Something</mat-label> -->
+        <input type="text" matInput placeholder="Search">
         <mat-icon matSuffix>search</mat-icon>
       </mat-form-field>
       <div class="button-group">
@@ -39,18 +43,6 @@
         <mat-icon class="col-white">delete</mat-icon>
       </button>
     </div> -->
-    <ng-container matColumnDef="actions">
-        <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
-        <mat-cell *matCellDef="let element">
-          <button mat-icon-button color="primary" (click)="onEdit()">
-            <mat-icon>edit</mat-icon>
-          </button>
-          <button mat-icon-button color="warn" (click)="onDelete()">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </mat-cell>
-      </ng-container>
-    <mat-card>
         <mat-card-header>
           <mat-card-title>
             List Of All Doctors
@@ -72,15 +64,16 @@
       </mat-cell>
     </ng-container>
     <ng-container matColumnDef="id">
-        <mat-header-cell *matHeaderCellDef mat-sort-header >ID</mat-header-cell>
-        <mat-cell *matCellDef="let row" class="square-box">> {{row.id}}</mat-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header  class="table-header">ID</mat-header-cell>
+        <mat-cell *matCellDef="let row" class="square-box"> {{row.id}}</mat-cell>
       </ng-container>
     <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header  class="table-header">Name</mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.name}}</mat-cell>
     </ng-container>
+    <!-- Departmnet Column -->
       <ng-container matColumnDef="department">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Department</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header  class="table-header">Department</mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.department}}</mat-cell>
       </ng-container>
        <!-- speclization Column -->
@@ -95,15 +88,27 @@
       </ng-container> -->
        <!-- Mobile Column -->
        <ng-container matColumnDef="mobile">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Mobile</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header  class="table-header">Mobile</mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.mobile}}</mat-cell>
       </ng-container>
 
         <!-- Email Column -->
       <ng-container matColumnDef="email">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header  class="table-header">Email</mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.email}}</mat-cell>
     </ng-container> 
+    <!-- Action Column -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef class="table-header">Actions</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button mat-icon-button color="primary" (click)="onEdit()">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" aria-label="Delete" >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
   <mat-paginator [pageSizeOptions]="[5, 10, 25, 50]" showFirstLastButtons></mat-paginator>
   
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

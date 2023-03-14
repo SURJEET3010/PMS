@@ -32,6 +32,7 @@ import { MatMenuModule } from "@angular/material/menu";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatSortModule} from '@angular/material/sort';
+// import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { MatBadgeModule } from "@angular/material/badge";
 import { MatChipsModule } from "@angular/material/chips";
@@ -40,6 +41,8 @@ import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MatListModule } from "@angular/material/list";
 import {MatTableModule} from '@angular/material/table';
 import {MatSelectModule} from '@angular/material/select';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -62,6 +65,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatIconModule,
     MatButtonModule,
     MatToolbarModule,
+    MatSnackBarModule,
     MatTableModule,
     MatDatepickerModule,
     MatProgressSpinnerModule,
@@ -73,6 +77,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatPaginatorModule,
     MatInputModule,
     MatMenuModule,
+    MatGridListModule,
     MatNativeDateModule,
     MatProgressBarModule,
     MatExpansionModule,
