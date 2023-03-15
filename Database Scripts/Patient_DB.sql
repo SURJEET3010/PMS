@@ -12,6 +12,7 @@ dob varchar(10),
 contact_number varchar(10),
 password varchar(50),
 gender varchar(10),
+contact int,
 address varchar(150)
 );
 
