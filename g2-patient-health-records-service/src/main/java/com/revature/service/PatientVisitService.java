@@ -1,12 +1,23 @@
 package com.revature.service;
 
-import java.util.List;
 import com.revature.bindings.PatientVisitModel;
+import com.revature.bindings.PrescriptionModel;
+import com.revature.bindings.TestModel;
+import com.revature.entities.PrescriptionDetails;
 
 public interface PatientVisitService {
 	public String saveDetails(PatientVisitModel pvm);
-	public List<PatientVisitModel> viewAll();
-	public PatientVisitModel editDetails(Integer pId);
-	public List<PatientVisitModel> deleteDetails(Integer pId);
+	public PatientVisitModel patientDetails(Integer pId);
+	public String deleteDetails(Integer pId);
+	
+	public String saveTestDetails(TestModel tm);
+	public TestModel testDetails(Integer tId);
+	public String deleteTest(Integer tId);
+	
+	public boolean savePrescription(PrescriptionDetails pd);
+	public PrescriptionModel preDetails(Integer tId);
+	public String deletePrescription(Integer pd);
+	
+	
 
 }
