@@ -1,0 +1,247 @@
+<!-- <mat-grid-list cols="3" rowHeight="200px">
+    <mat-grid-tile>
+      <mat-card>
+        <mat-card-header class="patient-card">
+          <mat-card-title>Patient Count</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <h1>{{patientCount}}</h1>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>NurseCount</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <h1>{{patientCount}}</h1>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Doctor Count</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <h1>{{doctorCount}}</h1>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Appointment Count</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <h1>{{appointmentCount}}</h1>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+   -->
+<!-- <mat-card> -->
+<mat-card-title>
+  Dashboard
+</mat-card-title>
+<div class="card-container">
+  <mat-card class="example-card mat-card-doctors">
+    <mat-card-header>
+      <mat-card-title>
+        Appointments
+      </mat-card-title>
+      <mat-card-subtitle>Doctor Count</mat-card-subtitle>
+      <span class="material-icons">color_lens</span>
+    </mat-card-header>
+    <mat-card-content>
+      <h1>{{doctorCount}}</h1>
+      <p>{{longText}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+    </mat-card-actions>
+    <mat-card-footer>
+      <!-- <mat-progress-bar mode="indeterminate"></mat-progress-bar> -->
+    </mat-card-footer>
+  </mat-card>
+  <mat-card class="example-card mat-card-patients ">
+    <mat-card-header>
+      <!-- <div mat-card-avatar>
+          <mat-icon>person_pin</mat-icon>
+        </div> -->
+      <mat-card-title>Patient</mat-card-title>
+      <mat-card-subtitle>patient Count</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <h1>{{patientCount}}</h1>
+      <p>{{longText}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+    </mat-card-actions>
+    <mat-card-footer>
+      <!-- <mat-progress-bar mode="indeterminate"></mat-progress-bar> -->
+    </mat-card-footer>
+  </mat-card>
+  <mat-card class="example-card mat-card-nurses">
+    <mat-card-header>
+      <mat-card-title>Nurses</mat-card-title>
+      <mat-card-subtitle>Nurse Count</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <h1>{{nurseCount}}</h1>
+      <p>{{longText}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+    </mat-card-actions>
+    <mat-card-footer>
+      <!-- <mat-progress-bar mode="indeterminate"></mat-progress-bar> -->
+    </mat-card-footer>
+  </mat-card>
+  <mat-card class="example-card mat-card-appointments">
+    <mat-card-header>
+      <mat-card-title>Appointments</mat-card-title>
+      <mat-card-subtitle>Appointment count</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <h1>{{appointmentCount}}</h1>
+      <p>{{longText}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+    </mat-card-actions>
+    <mat-card-footer>
+      <!-- <mat-progress-bar mode="indeterminate"></mat-progress-bar> -->
+    </mat-card-footer>
+  </mat-card>
+</div>
+
+<div class="table-container">
+  <mat-card class="table-card">
+    <mat-table #table [dataSource]="dataSource" matSort class="mat-cell" id="ptable">
+      <ng-container matColumnDef="select">
+        <mat-header-cell *matHeaderCellDef>
+          <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+            [indeterminate]="selection.hasValue() && !isAllSelected()">
+          </mat-checkbox>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+            [checked]="selection.isSelected(row)">
+          </mat-checkbox>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header">ID</mat-header-cell>
+        <mat-cell *matCellDef="let row" class="square-box"> {{row.id}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header">Name</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.name}}</mat-cell>
+      </ng-container>
+      <!-- Departmnet Column -->
+      <ng-container matColumnDef="department">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header">Department</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.department}}</mat-cell>
+      </ng-container>
+      <!-- speclization Column -->
+      <!-- <ng-container matColumnDef="speclization">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>speclization</mat-header-cell>
+              <mat-cell *matCellDef="let row"> {{row.speclization}}</mat-cell>
+            </ng-container> -->
+      <!-- Degree Column -->
+      <!-- <ng-container matColumnDef="degree">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>Degree</mat-header-cell>
+              <mat-cell *matCellDef="let row"> {{row.degree}}</mat-cell>
+            </ng-container> -->
+      <!-- Mobile Column -->
+      <ng-container matColumnDef="mobile">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header">Mobile</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.mobile}}</mat-cell>
+      </ng-container>
+
+      <!-- Email Column -->
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header">Email</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.email}}</mat-cell>
+      </ng-container>
+      <!-- Action Column -->
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef class="table-header">Actions</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <button mat-icon-button color="primary" (click)="onEdit()">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <!-- <button mat-icon-button color="warn" aria-label="Delete">
+            <mat-icon>delete</mat-icon>
+          </button> -->
+        </mat-cell>
+      </ng-container>
+      <!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 50]" showFirstLastButtons></mat-paginator> -->
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 50]" showFirstLastButtons></mat-paginator> -->
+  </mat-card>
+  <div class="child"><table>
+    <thead>
+      <tr>
+        <th>Doctor Name</th>
+        <th>Doctor Status</th>
+        <th>ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Dr. John Smith</td>
+        <td>Active</td>
+        <td>1234</td>
+      </tr>
+      <tr>
+        <tr>
+            <td>Dr. John Smith</td>
+            <td>Active</td>
+            <td>1234</td>
+      </tr>
+      <tr>
+        <td>Dr. John Smith</td>
+            <td>Active</td>
+            <td>1234</td>
+      </tr>
+      <tr>
+        <td>Dr. John Smith</td>
+            <td>Active</td>
+            <td>1234</td>
+      </tr>
+      <tr>
+        <td>Dr. John Smith</td>
+            <td>Active</td>
+            <td>1234</td>
+      </tr>
+      <tr>
+        <td>Dr. John Smith</td>
+            <td>Active</td>
+            <td>1234</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+</div>
+<!-- <mat-card class="example-card-2">
+  <mat-card-header>
+    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+    <mat-card-title>Shiba Inu</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p>This card has divider and indeterminate progress as footer</p>
+    <p>{{ longText }}</p>
+    <mat-divider></mat-divider>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>LIKE</button>
+    <button mat-button>SHARE</button>
+  </mat-card-actions>
+  <mat-card-footer>
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </mat-card-footer>
+</mat-card> -->
