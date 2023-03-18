@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.revature.entity.Physician;
 import com.revature.service.PhysicianService;
 
+
 @RestController
 public class PhysicianController {
 
@@ -49,27 +50,22 @@ public class PhysicianController {
 	
 
 	@PostMapping("/physician-availability")
-	public ResponseEntity<Physician> acceptAvailability(@RequestBody Physician physician) {
+	public ResponseEntity<Physician> addPhysician(@RequestBody Physician physician) {
 		Physician phy = null;
 
-		try {
-			phy = this.physicianService.acceptAvailability(physician);
+		 	phy = this.physicianService.addPhysician(physician);
 			System.out.println(physician);
 			return ResponseEntity.status(HttpStatus.CREATED).body(phy);
 			
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			return ResponseEntity.status(HttpStatusCode.valueOf(401)).build();
-		}
+ 
 
 	}
 
-	@DeleteMapping("/physician-availability/{physicianEmail}")
-	public ResponseEntity<Void> rejectAvailability(@PathVariable("physicianEmail") String physicianEmail) {
+	@DeleteMapping("/physician-availability/{physicianId}")
+	public ResponseEntity<Void> deletePhysician(@PathVariable("physicianId") int physicianId) {
 		boolean bool=false;
 		try {
-			bool = this.physicianService.rejectAvailability(physicianEmail);
+			bool = this.physicianService.deletePhysician(physicianId);
 			if(bool == true) {
 				System.out.println("Deleted succesfully");
 				return ResponseEntity.status(HttpStatusCode.valueOf(202)).build();
@@ -84,15 +80,15 @@ public class PhysicianController {
 
 	}
 
-	@PutMapping("/physician-availability/{physicianEmail}")
-	public ResponseEntity<Physician> UpdateAvailability(@RequestBody Physician physician,
-			@PathVariable("physicianEmail") String physicianEmail) {
+	@PutMapping("/physician-availability/{physicianId}")
+	public ResponseEntity<Physician> UpdatePhysicianInfo(@RequestBody Physician physician,
+			@PathVariable("physicianId") int physicianId) {
 		Physician phy = null;
 
 		try {
 
-			 phy = this.physicianService.UpdateAvailability(physician, physicianEmail);
-			
+			 phy = this.physicianService.updatePhysicianInfo(physician, physicianId);
+
 			 if(phy!=null) {
 				 System.out.println("Update successfully");
 				 return ResponseEntity.accepted().body(physician);
@@ -100,7 +96,7 @@ public class PhysicianController {
 			 else {
 				 return ResponseEntity.status(HttpStatusCode.valueOf(401)).build();
 			 }
-			 
+
 
 		} catch (Exception e) {
 			e.printStackTrace();
