@@ -1,5 +1,7 @@
 package com.revature.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +25,15 @@ public class RegisterService {
 		else {
 			return false;		
 		}		
+		
+	}
+	
+	
+	public List<PatientDetails> viewAllPatient(){
+		List<PatientDetails> findAll = patientRepo.findAll();
+		
+		
+		return findAll;
 		
 	}
 	

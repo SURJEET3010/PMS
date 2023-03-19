@@ -1,30 +1,30 @@
 package com.revature.entities;
 
-import java.time.LocalDate;
+import java.io.Serializable;
 import java.util.List;
-import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
 @Table(name = "PATIENT_VISIT_DETAILS")
 @Data
-public class PatientVisitDetails {
+public class PatientVisitDetails implements Serializable {
+
+	private static final long serialVersionUID = 3148327988005359558L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "VISIT_ID")
 	private int visitId;
-
+	
+	@Column(name="PATIENT_ID")
+	private int patientId;
 
 	@Column(name = "HEIGHT")
 	private float height;
@@ -62,20 +62,22 @@ public class PatientVisitDetails {
 	@Column(name = "ALLERGY")
 	private List<Integer> allergy;
 	
-	@OneToMany(mappedBy="visitDetails")
-	private Set<TestDetails> testDetails;
+//	 @Column(name="created_date")
+//	    @Temporal(TemporalType.DATE)
+//	    private LocalDate createdDate;
+//	 
+//	    @Temporal(TemporalType.DATE)
+//	    protected LocalDate modifiedDate;
 	
-	@OneToMany(mappedBy="visitDetails")
-	private Set<PrescriptionDetails> prescriptionDetails;
+//	@OneToMany(mappedBy="visitDetails")
+//	private Set<TestDetails> testDetails;
+//	
+//	@OneToMany(mappedBy="visitDetails")
+//	private Set<PrescriptionDetails> prescriptionDetails;
 	
-	@ManyToOne
-	@JoinColumn(name="patient_id")
-	private PatientDetails patient;
+//	@ManyToOne
+//	@JoinColumn(name="patient_id")
+//	private PatientDetails patient;
 	
-	@Column(name = "CREATED_DATE")
-	private LocalDate createdDate;
-	
-	@Column(name = "UPDATED_DATE")
-	private LocalDate updatedDate;
 	
 }
