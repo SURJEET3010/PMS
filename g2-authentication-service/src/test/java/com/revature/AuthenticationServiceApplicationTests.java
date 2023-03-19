@@ -1,10 +1,10 @@
-package com.pms;
+package com.revature;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class G2AuthenticationServiceApplicationTests {
+class AuthenticationServiceApplicationTests {
 
 	@Test
 	void contextLoads() {
