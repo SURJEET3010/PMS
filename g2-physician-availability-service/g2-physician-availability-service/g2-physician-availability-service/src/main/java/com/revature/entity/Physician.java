@@ -1,6 +1,5 @@
 package com.revature.entity;
 
-import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,10 +8,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "physician_availability")
+@NoArgsConstructor
+@AllArgsConstructor
 @Data
 public class Physician {
 
@@ -26,7 +29,10 @@ public class Physician {
 	@Column(name = "physician_email", unique = true)
 	private String physicianEmail;
 	private String department;
-	private LocalDateTime date;
+	@Column(name = "start_date")
+	private String startDate;
+	@Column(name = "end_date")
+	private String endDate;
 	private boolean availability;
 	@Column(name = "contact_number")
 	private String contactNumber;

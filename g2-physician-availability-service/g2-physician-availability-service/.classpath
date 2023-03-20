@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="g2-physician-availability-service/src/main/java"/>
+	<classpathentry kind="src" path="g2-physician-availability-service/src/test/java"/>
+	<classpathentry kind="lib" path="g2-physician-availability-service/.mvn/wrapper/maven-wrapper.jar"/>
+	<classpathentry kind="output" path="g2-physician-availability-service/target/classes"/>
+</classpath>
