@@ -21,17 +21,17 @@ import com.revature.entities.TestDetails;
 import com.revature.service.PatientVisitService;
 
 @RestController
-@RequestMapping("/visit")
+@RequestMapping("/visit/{patientId}")
 public class PatientVisitRestController {
 	
 	@Autowired
 	private PatientVisitService service;
 	
-	@PostMapping("/{patientId}")
-	public ResponseEntity<String> save(@PathVariable("patientId") int pid,@RequestBody PatientVisitDetails patientVisit){
+	@PostMapping
+	public ResponseEntity<String> save(@PathVariable("patientId") int patientId,@RequestBody PatientVisitDetails patientVisit){
 	ResponseEntity<String> resp=null;
 	try {
-	patientVisit.setPatientId(pid);
+	patientVisit.setPatientId(patientId);
 	Integer id=service.saveVisit(patientVisit);
 	resp=new ResponseEntity<String>("Patient visit '"+id+"' created", HttpStatus.OK);
 	} catch (Exception e) {

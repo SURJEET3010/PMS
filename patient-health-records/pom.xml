@@ -9,13 +9,13 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.revature</groupId>
-	<artifactId>patient-registration-login-app</artifactId>
+	<artifactId>patient-health-record-app</artifactId>
 	<version>1.0.1-RELEASE</version>
 	<name>patient-registration-login-app</name>
 	<description>Patient Health Record Service</description>
 	<properties>
 		<java.version>17</java.version>
-		<spring-cloud.version>2022.0.1</spring-cloud.version>
+		<!-- <spring-cloud.version>2022.0.1</spring-cloud.version> -->
 	</properties>
 	<dependencies>
 		<dependency>
@@ -64,10 +64,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web-services</artifactId>
 		</dependency>
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-consul-discovery</artifactId>
-		</dependency>
+		</dependency> -->
 		<dependency>
     		<groupId>org.modelmapper</groupId>
    			<artifactId>modelmapper</artifactId>
@@ -76,7 +76,7 @@
 		
 		
 	</dependencies>
-	<dependencyManagement>
+	<!-- <dependencyManagement>
 		<dependencies>
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
@@ -86,7 +86,7 @@
 				<scope>import</scope>
 			</dependency>
 		</dependencies>
-	</dependencyManagement>
+	</dependencyManagement> -->
 
 
 	<build>
