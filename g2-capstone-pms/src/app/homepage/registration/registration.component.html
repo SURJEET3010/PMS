@@ -1,0 +1,86 @@
+<div mat-dialog-title>
+    <h1>Registration Form</h1>
+    <h4>only for new patient</h4>
+</div>
+<div mat-dialog-content class="content">
+    <div class="row">
+<mat-form-field appearance="outline">
+  <mat-label>Title*</mat-label>
+  <mat-select>
+    <mat-option *ngFor="let val of title" [value]="val">{{val}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+    </div>
+    <div class="row">
+        <mat-form-field appearance="outline">
+            <mat-label>First Name*</mat-label>
+            <input matInput placeholder="chin">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Last Name*</mat-label>
+            <input matInput placeholder="kush">
+          </mat-form-field>
+    </div>
+
+   
+    <div class="row">
+        
+
+          <mat-form-field appearance="outline">
+            <mat-label>Date Of Birth*</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Email*</mat-label>
+            <input matInput type="email" placeholder="@gmail.com">
+          </mat-form-field>
+    </div>
+
+    <div class="row">
+        <mat-radio-group aria-label="Select an option">
+            <mat-label><b>Gender</b></mat-label>
+            <mat-radio-button value="1">Male</mat-radio-button>
+            <mat-radio-button value="2">Female</mat-radio-button>
+            <mat-radio-button value="3">Others</mat-radio-button>
+          </mat-radio-group>
+
+    </div>
+
+    <div class="row">
+        <mat-form-field appearance="outline">
+            <mat-label>Password*</mat-label>
+            <input matInput type="password" placeholder="*******">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Confirm Password*</mat-label>
+            <input matInput type="password" placeholder="******">
+          </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field appearance="outline">
+          <mat-label>Contact Number*</mat-label>
+          <input matInput  placeholder="Number">
+          <mat-hint>Country Code-1234567890</mat-hint>
+        </mat-form-field>
+  </div>
+
+    <div class="row">
+        <mat-form-field appearance="outline">
+            <mat-label>Address</mat-label>
+            <input matInput placeholder="Address">
+          </mat-form-field>
+    </div>
+
+    
+<div mat-dialog-actions class="action">
+    <button mat-raised-button color="primary">Register</button>
+    <button mat-raised-button color="warn">Cancel</button>
+</div>

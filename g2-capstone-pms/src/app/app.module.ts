@@ -25,13 +25,14 @@ import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { MatSliderModule } from "@angular/material/slider";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatCheckboxModule } from "@angular/material/checkbox";
-import { MatFormFieldModule } from "@angular/material/form-field";
+
 import { MatInputModule } from "@angular/material/input";
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatMenuModule } from "@angular/material/menu";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatSortModule} from '@angular/material/sort';
+import {MatFormFieldModule} from '@angular/material/form-field'
 // import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { MatBadgeModule } from "@angular/material/badge";
@@ -50,6 +51,13 @@ import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppointmentFormComponent } from './homepage/appointment-form/appointment-form.component';
 
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { HttpClientModule } from '@angular/common/http';
+import { RegistrationComponent } from './homepage/registration/registration.component';
+import { LoginFormComponent } from './homepage/login-form/login-form.component';
+
+import {FlexLayoutModule} from "@angular/flex-layout";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,6 +72,9 @@ import { AppointmentFormComponent } from './homepage/appointment-form/appointmen
     ImageComponent,
     NavbarComponent,
     AppointmentFormComponent,
+    RegistrationComponent,
+    LoginFormComponent,
+
   
   ],
   imports: [
@@ -99,8 +110,9 @@ import { AppointmentFormComponent } from './homepage/appointment-form/appointmen
     MatSelectModule,
     LayoutModule,
     MatRadioModule,
-    ReactiveFormsModule 
-    
+    ReactiveFormsModule,
+    HttpClientModule,
+    FlexLayoutModule
      
   ],
   providers: [],
