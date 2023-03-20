@@ -119,7 +119,7 @@ public class PatientVisitRestController {
 	return resp;
 	}
 	
-	@GetMapping("/tests")
+	@GetMapping("/test")
 	public ResponseEntity<?> getAllTests(){
 	ResponseEntity<?> resp=null;
 	List<TestDetails> tests=service.getAllTests();
@@ -133,29 +133,29 @@ public class PatientVisitRestController {
 	}
 	
 	@GetMapping("/test/{testId}")
-	public ResponseEntity<?> getSingleTest(@PathVariable("testId") int tid){
+	public ResponseEntity<?> getSingleTest(@PathVariable("testId") int testId){
 		ResponseEntity<?> resp=null;
-		Optional<TestDetails> test = service.getOneTest(null);
+		Optional<TestDetails> test = service.getOneTest(testId);
 		if(test.get()== null)
-			resp= new ResponseEntity<String>("Data Not found",HttpStatus.NOT_FOUND);
+			resp= new ResponseEntity<String>("Data Not found",HttpStatus.BAD_REQUEST);
 		else
-		resp= new ResponseEntity<>(test,HttpStatus.FOUND);
+		resp= new ResponseEntity<>(test,HttpStatus.OK);
 		
 		return resp;
 	}
 	
 	@DeleteMapping("/test/{testId}")
-	public ResponseEntity<String> deleteTestById(@PathVariable("testId") Integer tid)
+	public ResponseEntity<String> deleteTestById(@PathVariable("testId") Integer testId)
 	{
 	ResponseEntity<String> resp=null;
 	//check for exist
-	boolean present=service.isTestPresent(tid);
+	boolean present=service.isTestPresent(testId);
 	if(present) { 
 	//if exist
-	service.deleteTest(tid);
-	resp=new ResponseEntity<String>("Deleted test '"+tid+"' successfully",HttpStatus.ACCEPTED);
+	service.deleteTest(testId);
+	resp=new ResponseEntity<String>("Deleted test '"+testId+"' successfully",HttpStatus.ACCEPTED);
 	} else { //not exist
-	resp=new ResponseEntity<String>("'"+tid+"' does not Exist",HttpStatus.BAD_REQUEST);
+	resp=new ResponseEntity<String>("'"+testId+"' does not Exist",HttpStatus.BAD_REQUEST);
 	}
 	return resp;
 	}
@@ -193,7 +193,7 @@ public class PatientVisitRestController {
 	return resp;
 	}
 	
-	@GetMapping("/prescriptions")
+	@GetMapping("/prescription")
 	public ResponseEntity<?> getAllPriscriptions(){
 	ResponseEntity<?> resp=null;
 	List<PrescriptionDetails> prescriptions =service.getAllPrescriptions();
@@ -211,9 +211,9 @@ public class PatientVisitRestController {
 		ResponseEntity<?> resp=null;
 		Optional<PrescriptionDetails> prescribe = service.getOnePrescription(prid);
 		if(prescribe.get()== null)
-			resp= new ResponseEntity<String>("Data Not found",HttpStatus.NOT_FOUND);
+			resp= new ResponseEntity<String>("Data Not found",HttpStatus.BAD_REQUEST);
 		else
-		resp= new ResponseEntity<>(prescribe,HttpStatus.FOUND);
+		resp= new ResponseEntity<>(prescribe,HttpStatus.OK);
 		
 		return resp;
 	}

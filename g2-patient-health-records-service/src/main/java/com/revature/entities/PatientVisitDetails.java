@@ -1,6 +1,7 @@
 package com.revature.entities;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -9,6 +10,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import lombok.Data;
 
 @Entity
@@ -62,12 +65,12 @@ public class PatientVisitDetails implements Serializable {
 	@Column(name = "ALLERGY")
 	private List<Integer> allergy;
 	
-//	 @Column(name="created_date")
-//	    @Temporal(TemporalType.DATE)
-//	    private LocalDate createdDate;
-//	 
-//	    @Temporal(TemporalType.DATE)
-//	    protected LocalDate modifiedDate;
+	 @Column(name="created_date")
+	    @Temporal(TemporalType.DATE)
+	    private LocalDate createdDate;
+	 
+	    @Temporal(TemporalType.DATE)
+	    protected LocalDate modifiedDate;
 	
 //	@OneToMany(mappedBy="visitDetails")
 //	private Set<TestDetails> testDetails;
