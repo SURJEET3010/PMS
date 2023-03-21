@@ -44,7 +44,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatGridListModule} from '@angular/material/grid-list';
-import { ImageComponent } from './homepage/image/image.component';
+
 import { NavbarComponent } from './homepage/navbar/navbar.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatRadioModule } from '@angular/material/radio';
@@ -57,6 +57,9 @@ import { RegistrationComponent } from './homepage/registration/registration.comp
 import { LoginFormComponent } from './homepage/login-form/login-form.component';
 
 import {FlexLayoutModule} from "@angular/flex-layout";
+// Import the module from the SDK
+import { AuthModule } from '@auth0/auth0-angular';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -69,11 +72,12 @@ import {FlexLayoutModule} from "@angular/flex-layout";
     PatientComponent,
     AppointmentComponent,
     AboutComponent,
-    ImageComponent,
     NavbarComponent,
     AppointmentFormComponent,
     RegistrationComponent,
     LoginFormComponent,
+    
+    
 
   
   ],
@@ -112,7 +116,15 @@ import {FlexLayoutModule} from "@angular/flex-layout";
     MatRadioModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    FormsModule,
+    AuthModule.forRoot({
+      domain: 'kushwah09.us.auth0.com',
+      clientId: 'y1BoJ6izuL5av06F0ChiKstW8fpC29Gi',
+      authorizationParams: {
+        redirect_uri: window.location.origin
+      }
+    }),
      
   ],
   providers: [],

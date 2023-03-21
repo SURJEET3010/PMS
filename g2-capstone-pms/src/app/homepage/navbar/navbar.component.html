@@ -1,4 +1,4 @@
-<mat-toolbar>
+<!-- <mat-toolbar>
   <a routerLink="/home" style="text-decoration: none;">
    <span style="font-size: 30px;">COMPANY</span>
      </a>
@@ -27,4 +27,37 @@
 <button  routerLinkActive="active"  routerLink="/item1" mat-menu-item>Item</button>
 <button  routerLinkActive="active"  routerLink="/item2" mat-menu-item>Item</button>
 <button  routerLinkActive="active"  routerLink="/item3" mat-menu-item>Item</button>
-</mat-menu>
+</mat-menu> -->
+
+
+<mat-toolbar color="primary">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>PRACTISE MANAGEMENT SYSTEM</span>
+  <span class="example-spacer"></span>
+
+  <button mat-raised-button (click)="openLoginPage()" >
+    Login
+  </button>
+  <span class="spacer"></span>
+  <button mat-raised-button (click)="openAddEditEmpForm()" >
+    Register
+  </button>
+
+  <i class="fa-solid fa-user-doctor-message"></i>
+
+  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>favorite</mat-icon>
+  </button>
+
+  <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+    <button (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })">
+      Log out
+    </button>
+  </ng-container>
+
+  <ng-template #loggedOut>
+    <button (click)="auth.loginWithRedirect()">Log in</button>
+  </ng-template>
+</mat-toolbar>

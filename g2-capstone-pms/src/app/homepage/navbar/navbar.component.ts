@@ -7,6 +7,8 @@ import { map, shareReplay } from 'rxjs/operators';
 import { Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
+import { AuthService } from '@auth0/auth0-angular';
+
 
 @Component({
   selector: 'app-navbar',
@@ -33,7 +35,8 @@ export class NavbarComponent  implements OnInit {
 
   constructor(private breakpointObserver: BreakpointObserver,
      private _dialog: MatDialog,
-      @Inject(DOCUMENT) public document: Document) {
+      @Inject(DOCUMENT) public document: Document,
+      public auth: AuthService) {
 
 
 
