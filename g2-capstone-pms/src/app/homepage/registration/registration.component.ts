@@ -4,6 +4,7 @@ import { Route, Router } from '@angular/router';
 import { User } from 'app/class_files/user';
 import { AuthenticationService } from 'app/authentication.service';
 import { NgForm } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -20,8 +21,18 @@ export class RegistrationComponent {
   ];
 
 
-  constructor(private registerUser: AuthenticationService, private router: Router, private user: User) {
+  constructor(private registerUser: AuthenticationService, 
+                private router: Router, 
+                private user: User,
+                private datePipe: DatePipe) {
   }
+
+  convertDate(date: any): any {
+    const formattedDate = this.datePipe.transform(date, 'yyyy-MM-dd');
+    return formattedDate;
+  }
+  
+
 
   email = new FormControl('', [Validators.required, Validators.email]);
   getErrorMessage() {
@@ -38,7 +49,7 @@ export class RegistrationComponent {
     this.user.lastName = value.lastName;
     this.user.email = value.email;
     this.user.contact = value.contact;
-    this.user.dob = value.dob;
+    this.user.dob = this.convertDate(value.dob);
     this.user.gender = value.gender;
     this.user.password = value.password;
     this.user.address = value.address;

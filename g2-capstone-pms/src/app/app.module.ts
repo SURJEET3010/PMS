@@ -58,8 +58,10 @@ import { LoginFormComponent } from './homepage/login-form/login-form.component';
 
 import {FlexLayoutModule} from "@angular/flex-layout";
 // Import the module from the SDK
-import { AuthModule } from '@auth0/auth0-angular';
+// import { AuthModule } from '@auth0/auth0-angular';
 import { FormsModule } from '@angular/forms';
+import { DatePipe } from '@angular/common';
+
 
 @NgModule({
   declarations: [
@@ -118,13 +120,14 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     FlexLayoutModule,
     FormsModule,
-    AuthModule.forRoot({
-      domain: 'kushwah09.us.auth0.com',
-      clientId: 'y1BoJ6izuL5av06F0ChiKstW8fpC29Gi',
-      authorizationParams: {
-        redirect_uri: window.location.origin
-      }
-    }),
+    DatePipe
+    // AuthModule.forRoot({
+    //   domain: 'kushwah09.us.auth0.com',
+    //   clientId: 'y1BoJ6izuL5av06F0ChiKstW8fpC29Gi',
+    //   authorizationParams: {
+    //     redirect_uri: window.location.origin
+    //   }
+    // }),
      
   ],
   providers: [],
