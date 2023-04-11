@@ -1,20 +1,18 @@
-package com.revature.service;
+package com.pms.service;
 
 
 import java.util.List;
-import java.util.Optional;
-
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
+import org.springframework.data.rest.webmvc.json.patch.PatchException;
 import org.springframework.stereotype.Service;
 
-import com.revature.dto.PatientVisitDto;
-import com.revature.entities.PatientVisitDetails;
-import com.revature.entities.PrescriptionDetails;
-import com.revature.entities.TestDetails;
-import com.revature.repositories.PatientVisitRepo;
-import com.revature.repositories.PrescriptionRepo;
-import com.revature.repositories.TestRepo;
+import com.pms.model.PatientVisitDetails;
+import com.pms.model.PrescriptionDetails;
+import com.pms.model.TestDetails;
+import com.pms.repositories.PatientVisitRepo;
+import com.pms.repositories.PrescriptionRepo;
+import com.pms.repositories.TestRepo;
 
 @Service
 public class PatientVisitServiceImpl implements PatientVisitService {
@@ -28,160 +26,125 @@ public class PatientVisitServiceImpl implements PatientVisitService {
 	@Autowired
 	PrescriptionRepo prescriptionRepo;
 	
-	@Autowired
-	private ModelMapper modelMapper;
 
 	@Override
-	public Integer saveVisit(PatientVisitDetails pvd) {
+	public PatientVisitDetails saveVisit(PatientVisitDetails visit) {
 
-		return patientRepo.save(pvd).getVisitId();
+		PatientVisitDetails result = patientRepo.save(visit);
+		if(result == null) {
+			throw new PatchException("visit details data not correct "+result);
+			//return null;
+		}
+		
+		return result;
 	}
 
 	@Override
-	public void updateVisit(PatientVisitDetails pvd) {
+	public PatientVisitDetails updateVisit(String visitId,PatientVisitDetails visit) {
 
-		patientRepo.save(pvd);
+		boolean present=patientRepo.existsById(visitId);
+		if(present) {                              //if exist
+		visit.setVisitId(visitId);
+		   return patientRepo.save(visit);
+		}else {
+			throw new ResourceNotFoundException("Visit Id Not found ");
+		}
+		
 		
 	}
 
 	@Override
-	public void deleteVisit(Integer visitId) {
+	public void deleteVisit(String visitId) {
+		if(patientRepo.existsById(visitId)) {
+			   patientRepo.deleteById(visitId);
+			}else {
+				throw new ResourceNotFoundException("Visit Id Not found ");
+			}
 
-		patientRepo.deleteById(visitId);
-		testRepo.deleteTestById(visitId);
-		prescriptionRepo.deletePrescriptionById(visitId);
+		//patientRepo.deleteById(visitId);
 	}
 
 	@Override
-	public List<PatientVisitDetails> getAllVisit() {
+	public List<PatientVisitDetails> getAllVisit(String patientId) {
 		
-		return patientRepo.findAll();
+		return patientRepo.getAllVisitDetails(patientId);
 	}
 
-	@Override
-	public Optional<PatientVisitDetails> getOneVisit(Integer visitId) {
 	
-		return patientRepo.findById(visitId);
-	}
-
 	@Override
-	public boolean isVisitPresent(Integer vid) {
-		
-		return patientRepo.existsById(vid);
+	public PatientVisitDetails getRecentVisitDetails(String patientId) {
+		return patientRepo.findByVisitDate(patientId);
 	}
 	
 	//=================================Test Service==============================
 
 	@Override
-	public String saveTest(TestDetails tm) {
+	public TestDetails saveTest(String visitId,TestDetails test) {
+		TestDetails status=patientRepo.findById(visitId).map(visit->{
+		      test.setVisitDetails(visit);
+		      return testRepo.save(test);
+		    }).orElseThrow(() -> new ResourceNotFoundException("Not found "));
 		
-		return testRepo.save(tm).getTestName();
+		return status;
+		
+		//return testRepo.save(tm).getTestName();
 	}
 
 	@Override
-	public void deleteTest(Integer tid) {
-		testRepo.deleteById(tid);
-		
+	public void deleteTest(String testId) {
+		if(testRepo.existsById(testId)) {
+		testRepo.deleteById(testId);
+		}else {
+			throw new ResourceNotFoundException("Id Not found ");
+		}
 	}
 
-	@Override
-	public void updateTest(TestDetails tid) {
-		testRepo.save(tid);
-		
-	}
+//	@Override
+//	public TestDetails updateTest(String testId,TestDetails test) {
+//		boolean present=testRepo.existsById(testId);
+//		if(present) {                              //if exist
+//		test.setTestId(testId);
+//		return testRepo.save(test);
+//		}else {
+//			throw new ResourceNotFoundException("Id Not found ");
+//		}
+//		
+//		
+//	}
 
 	@Override
-	public List<TestDetails> getAllTests() {
+	public List<TestDetails> getAllTests(String visitId) {
 	
-		return testRepo.findAll();
+		return testRepo.getAllTests(visitId);
 	}
-
-	@Override
-	public Optional<TestDetails> getOneTest(Integer tId) {
-		
-		return testRepo.findById(tId);
-	}
-
-	@Override
-	public boolean isTestPresent(Integer tId) {
-		
-		return testRepo.existsById(tId);
-	}
+	
+	
 	
 	//===========================Prescription Service===================================
 
 	@Override
-	public String savePrescription(PrescriptionDetails pm) {
+	public PrescriptionDetails savePrescription(String visitId,PrescriptionDetails prescription) {
+		PrescriptionDetails status=patientRepo.findById(visitId).map(visit->{
+		      prescription.setVisitDetails(visit);
+		      return prescriptionRepo.save(prescription);
+		    }).orElseThrow(() -> new ResourceNotFoundException("Not found "));
 		
-		return prescriptionRepo.save(pm).getPrescriptionName();
-	}
-
-	@Override
-	public void deletePrescription(Integer prid) {
+		return status;
 		
-		prescriptionRepo.deleteById(prid);
-		
-	}
-
-	@Override
-	public void updatePrescription(PrescriptionDetails prd) {
-		
-		prescriptionRepo.save(prd);
-		
-	}
-
-	@Override
-	public List<PrescriptionDetails> getAllPrescriptions() {
-		
-		return prescriptionRepo.findAll();
-	}
-
-	@Override
-	public Optional<PrescriptionDetails> getOnePrescription(Integer prid) {
-		
-		return prescriptionRepo.findById(prid);
-	}
-
-	@Override
-	public boolean isPrescriptionPresent(Integer prid) {
-	
-		return prescriptionRepo.existsById(prid);
-	}
-	
-	
-	//=================================DTO Servive==========================
-	
-	
-	@Override
-	public PatientVisitDto createVisitDetails(PatientVisitDto patientVisitDto)
-	{
-		modelMapper.getConfiguration().setAmbiguityIgnored(true);
-		PatientVisitDetails visitHistory=modelMapper.map(patientVisitDto, PatientVisitDetails.class);
-		PatientVisitDetails savedVisit=patientRepo.save(visitHistory);
-		PatientVisitDto savedVisitDto=modelMapper.map(savedVisit, PatientVisitDto.class);
-		return savedVisitDto;
-		
+		//return prescriptionRepo.save(pd).getPrescriptionName();
 	}
 
 
+
 	@Override
-	public PatientVisitDto updateVisitDetials(int patientId, PatientVisitDto patientVisitDto) 
-	{
-		PatientVisitDetails existingVisit=patientRepo.findById(patientId).get();
-		existingVisit.setHeight(patientVisitDto.getHeight());
-		existingVisit.setWeight(patientVisitDto.getWeight());
-		existingVisit.setBpDiastolic(patientVisitDto.getBPdiastolic());
-		existingVisit.setBpSystollic(patientVisitDto.getBPsystolic());
-		existingVisit.setBodyTemperature(patientVisitDto.getBodyTemperature());
-		existingVisit.setRespirationRate(patientVisitDto.getRepirationRate());
-		existingVisit.setKeyNotes(patientVisitDto.getKeyNotes());
-		
-		PatientVisitDetails updatedVisitDetails=patientRepo.save(existingVisit);
-		patientVisitDto=modelMapper.map(updatedVisitDetails,PatientVisitDto.class);
-		return patientVisitDto;
-		
+	public List<PrescriptionDetails> getAllPrescriptions(String visitId) {
+		if(visitId!=null) {
+		return prescriptionRepo.getPrescriptions(visitId);
+		}else {
+			throw new ResourceNotFoundException("Data Not found ");
+		}
 	}
-	
+
 	
 	
 }
