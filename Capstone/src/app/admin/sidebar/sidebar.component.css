@@ -1,0 +1,90 @@
+img{
+    margin-top: 16px;
+    height: 150px;
+    width: 100;
+  }
+  *{
+    /* box-sizing: border-box; */
+    text-decoration: none;
+    color: aliceblue;
+    /* color:#865DFF */
+  }
+
+ * :hover{ color: aqua;
+transform-box:fill-box;}
+
+  .user {
+    text-align: center;
+    font-weight: 800;
+    margin-bottom: 50px;
+  }
+  
+  .user img {
+    height: 100px;
+    width: 100px;
+  }
+  .name{
+    color: aliceblue;
+    /* color:#865DFF */
+  }
+  .mail{
+    margin-top: -16px;
+  }
+  .menu-head {
+    margin-left: 40px;
+    margin-bottom: 20px;
+  }
+     /* menu-item{
+    .menu-button{
+    display: block;
+    width: 100px;
+    position: relative;
+    display: flex;
+    padding-left: 40px;
+    margin-bottom: 10px;
+    }
+} */
+/* .menu-item .menu-button::before{
+   
+    font-family: "Font Awesome 5 Free";
+    margin-right: 5px;
+    display: flex;
+    justify-content: flex-end;
+  } */
+  .menu-button span{
+    margin-left: 5px;
+    margin-right: 10px;
+    display: block;
+    width: 200px;
+    position: relative;
+    display: flex;
+    padding-left: 10px;
+    margin-bottom: 5px;
+  }
+
+
+  .menu-button span :hover{
+    color:black;
+  }
+  /* .menu-button-hover{
+    background-color:chartreuse;
+  }
+  .menu-button:focus{
+    background-color:antiquewhite;
+  } */
+  .menu-button {
+    /* display: block;
+    width: 100px;
+    position: relative;
+    display: flex;
+    padding-left: 40px;
+    margin-bottom: 10px; */
+    background-color: #0f172a;
+  }
+  
+  .menu-button:hover,
+  .menu-button:focus {
+    color:antiquewhite;
+   
+  }
+  

@@ -1,0 +1,71 @@
+<mat-card class="rounded-card">
+    <mat-card-content class="card-content">
+      <mat-card-title></mat-card-title>
+  
+      <mat-form-field appearance="outline" class="search-box">
+        <input type="text" matInput placeholder="Search" />
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+    </mat-card-content>
+  </mat-card>
+  <mat-card-header>
+    <mat-card-title> All Appointments </mat-card-title>
+  </mat-card-header>
+  <mat-card class="table-card">
+    <mat-table
+      #table
+      [dataSource]="dataSource"
+      matSort
+      class="mat-cell"
+      id="ptable"
+    >
+      <ng-container matColumnDef="appointmentId">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"
+          >Appointment ID</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row" class="square-box">
+          {{ row.appointmentId }}</mat-cell
+        >
+      </ng-container>
+      <ng-container matColumnDef="physicianMail">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header">
+          Physician Email</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row"> {{ row.physicianEmail }}</mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="reason">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"
+          >Reason</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row"> {{ row.reason }}</mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="appointmentStatus">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header">
+          Appointment Status</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row"> {{ row.acceptance }}</mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="appointmentDate">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header">
+          Appointment Date</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row"> {{ row.appointmentDate }}</mat-cell>
+      </ng-container>
+  
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 25, 50]"
+        showFirstLastButtons
+      ></mat-paginator>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 25, 50]"
+      showFirstLastButtons
+    ></mat-paginator>
+  </mat-card>
+  

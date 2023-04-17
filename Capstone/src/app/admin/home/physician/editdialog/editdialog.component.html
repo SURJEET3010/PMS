@@ -1,0 +1,39 @@
+<h2 mat-dialog-title>Edit Physician Availability</h2>
+<div mat-dialog-content class="content">
+  <div class="row">
+<form #editForm = ngForm (ngSubmit)="onSave(editForm.value)">
+      <mat-form-field appearance="outline" class="row">
+        <input
+          matInput
+          [matDatepicker]="startdatePicker"
+          name ="startdate"
+          ngModel
+          placeholder="Start Date"
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="startdatePicker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #startdatePicker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <input
+          matInput
+          [matDatepicker]="enddatePicker"
+          name ="enddate" 
+          ngModel
+          placeholder="End Date"
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="enddatePicker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #enddatePicker></mat-datepicker>
+      </mat-form-field>
+    <mat-dialog-actions>
+      <button mat-button (click)="onCancel()">Cancel</button>
+      <button mat-button color="primary" type="submit" >Save</button>
+    </mat-dialog-actions>
+    </form>
+  </div>

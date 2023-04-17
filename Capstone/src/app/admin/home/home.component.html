@@ -1,0 +1,107 @@
+
+<div flex-layout="grid wrap">
+<div class="card-container" fx.xs="100%">
+  <mat-card class="example-card mat-card-doctors">
+    <mat-card-header>
+      <mat-card-title>
+        Physician
+      </mat-card-title>
+      <!-- <mat-card-subtitle>Doctor Count</mat-card-subtitle> -->
+      <!-- <span class="material-icons">color_lens</span> -->
+    </mat-card-header>
+    <mat-card-content>
+      <h1>{{doctorCount}} +</h1>
+      <!-- <p>{{longText}}</p> -->
+    </mat-card-content>
+    <mat-card-actions>
+    </mat-card-actions>
+    <mat-card-footer>
+      <!-- <mat-progress-bar mode="indeterminate"></mat-progress-bar> -->
+    </mat-card-footer>
+  </mat-card>
+  <mat-card class="example-card mat-card-patients ">
+    <mat-card-header>
+      <!-- <div mat-card-avatar>
+          <mat-icon>person_pin</mat-icon>
+        </div> -->
+      <mat-card-title>Patients</mat-card-title>
+      <!-- <mat-card-subtitle>patient Count</mat-card-subtitle> -->
+    </mat-card-header>
+    <mat-card-content>
+      <h1>{{patientCount}} + </h1>
+      <!-- <p>{{longText}}</p> -->
+    </mat-card-content>
+    <mat-card-actions>
+    </mat-card-actions>
+    <mat-card-footer>
+      <!-- <mat-progress-bar mode="indeterminate"></mat-progress-bar> -->
+    </mat-card-footer>
+  </mat-card>
+  <mat-card class="example-card mat-card-nurses">
+    <mat-card-header>
+      <mat-card-title>Nurses</mat-card-title>
+      <!-- <mat-card-subtitle>Nurse Count</mat-card-subtitle> -->
+    </mat-card-header>
+    <mat-card-content>
+      <h1>{{nurseCount}}+</h1>
+      <!-- <p>{{longText}}</p> -->
+    </mat-card-content>
+    <mat-card-actions>
+    </mat-card-actions>
+    <mat-card-footer>
+      <!-- <mat-progress-bar mode="indeterminate"></mat-progress-bar> -->
+    </mat-card-footer>
+  </mat-card>
+  <mat-card class="example-card mat-card-appointments">
+    <mat-card-header>
+      <mat-card-title>Appointments</mat-card-title>
+      <!-- <mat-card-subtitle>Appointment count</mat-card-subtitle> -->
+    </mat-card-header>
+    <mat-card-content>
+      <h1>{{appointmentCount}}+</h1>
+      <!-- <p>{{longText}}</p> -->
+    </mat-card-content>
+    <mat-card-actions>
+    </mat-card-actions>
+    <mat-card-footer>
+      <!-- <mat-progress-bar mode="indeterminate"></mat-progress-bar> -->
+    </mat-card-footer>
+  </mat-card>
+</div>
+<mat-card-header>
+  <mat-card-title>
+  </mat-card-title>
+</mat-card-header>
+<mat-card class="table-card">
+  <mat-card-title class="header1">
+    Booked Appointment
+  </mat-card-title>
+<mat-table #table [dataSource]="dataSource" matSort class="mat-cell" id="ptable">
+<ng-container matColumnDef="patientId">
+<mat-header-cell *matHeaderCellDef mat-sort-header  class="table-header">Patient ID</mat-header-cell>
+<mat-cell *matCellDef="let row" class="square-box"> {{row.patientId}}</mat-cell>
+</ng-container>
+
+<ng-container matColumnDef="patientName">
+  <mat-header-cell *matHeaderCellDef mat-sort-header  class="table-header">Patient Name</mat-header-cell>
+  <mat-cell *matCellDef="let row" class="square-box"> {{row.patientName}}</mat-cell>
+  </ng-container>
+<ng-container matColumnDef="physicianEmail">
+<mat-header-cell *matHeaderCellDef mat-sort-header  class="table-header">Physician Email</mat-header-cell>
+<mat-cell *matCellDef="let row"> {{row.physicianEmail}}</mat-cell>
+</ng-container>
+<!-- Departmnet Column -->
+<ng-container matColumnDef="appointmentDate">
+<mat-header-cell *matHeaderCellDef mat-sort-header  class="table-header">Appointment Date</mat-header-cell>
+<mat-cell *matCellDef="let row"> {{row.appointmentDate}}</mat-cell>
+</ng-container>
+<ng-container matColumnDef="acceptance">
+<mat-header-cell *matHeaderCellDef mat-sort-header  class="table-header">Status</mat-header-cell>
+<mat-cell *matCellDef="let row"> {{row.acceptance}}</mat-cell>
+</ng-container>
+<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+<mat-paginator [pageSizeOptions]="[5, 10, 25, 50]" showFirstLastButtons></mat-paginator>
+</mat-card>
+</div>

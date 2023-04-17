@@ -1,0 +1,36 @@
+
+    <mat-toolbar color="primary" style="display: flex; justify-content: center; font-size: 45px; font-weight: bold;">
+      <span class="fill-remaining-space" style="text-align:center">Login Form</span>
+    </mat-toolbar>
+    <form [formGroup]="loginForm">
+      <div class="container">
+        <mat-card>
+          <mat-card-title>Login here</mat-card-title>
+          <mat-card-subtitle>Need account ? &nbsp;
+          <span>
+            <button mat-button color="primary" type="button" (click)="openRegistrationForm()">Register here</button>
+          </span>
+        </mat-card-subtitle>
+          <mat-card-content>
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="email" placeholder="Username" name="email" required>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="password" type="password" placeholder="Password" name="password" required>
+            </mat-form-field>
+            <div class="form-actions">
+              <button mat-raised-button color="primary" type="submit" (click)="login()">Login</button>
+            </div>
+            <a mat-button routerLink="/confirmEmail">  Forgot password ? </a>
+
+            
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </form>
+    
+    <router-outlet></router-outlet>
+    
+    
+    
+    

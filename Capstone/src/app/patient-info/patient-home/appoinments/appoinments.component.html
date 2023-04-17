@@ -1,0 +1,46 @@
+
+
+<form [formGroup]="appointmentForm">
+  <div class="container">
+      <mat-card>
+          <mat-card-title>Appointment Form</mat-card-title>
+          <mat-card-content>
+              <div class="example-container">
+                <mat-form-field appearance="outline">
+                  <mat-label>Appoinment Date</mat-label>
+                  <input
+                    matInput
+                    [matDatepicker]="picker"
+                    [min] = "today" 
+                    formControlName="appointmentDate"
+                    (dateChange)="appointmentFormattedDate($event)"
+                  />
+
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Physician Name</mat-label>
+                  <mat-select formControlName="physicianName">
+                    <mat-option *ngFor="let doctor of doctors"
+                    [value]="doctor"
+                    >{{doctor}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Health Issue</mat-label>
+                  <textarea matInput formControlName="reason"></textarea>
+                </mat-form-field>
+              
+              </div>
+              <div class="form-actions">
+                  <button mat-raised-button color="primary" (click)="onSubmit()">Submit</button>
+              </div>
+          </mat-card-content>
+      </mat-card>
+  </div>
+</form>

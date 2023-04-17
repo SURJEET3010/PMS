@@ -1,0 +1,48 @@
+<div matDialogTitle style="color: #143ba8">
+  <h1>View prescription details</h1>
+  <br />
+
+  <div mat-dialog-content class="content">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="prescriptionId">
+        <th mat-header-cell *matHeaderCellDef>Prescription Id</th>
+        <td mat-cell *matCellDef="let element">{{ element.prescriptionId }}</td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="prescriptionName">
+        <th mat-header-cell *matHeaderCellDef>Prescription Name</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.prescriptionName }}
+        </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="dosage">
+        <th mat-header-cell *matHeaderCellDef>Dosage</th>
+        <td mat-cell *matCellDef="let element">{{ element.dosage }}</td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="notes">
+        <th mat-header-cell *matHeaderCellDef>Notes</th>
+        <td mat-cell *matCellDef="let element">{{ element.notes }}</td>
+      </ng-container>
+      <!-- <ng-container matColumnDef="visitId">
+        <th mat-header-cell *matHeaderCellDef>Visit Id</th>
+        <td mat-cell *matCellDef="let element">{{ element.visitId }}</td>
+      </ng-container> -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+
+  <br />
+  <div mat-dialog-actions class="action">
+    <button mat-raised-button color="primary" matDialogClose>Close</button>
+  </div>
+</div>

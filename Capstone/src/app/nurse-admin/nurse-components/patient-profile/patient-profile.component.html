@@ -1,0 +1,111 @@
+
+
+<div style="display: flex; flex-wrap: wrap">
+  <mat-card class="rounded-card" style="flex: 1; margin-right: 0px">
+    <mat-card-content class="card-content">
+      <mat-card-title> Patient Profile </mat-card-title>
+      <div><b>Name:</b> {{ patientName | titlecase }}</div>
+      <div><b>Age:</b> {{ patientAge }}</div>
+      <div><b>Gender:</b> {{ patientGender }}</div>
+      <div><b>Mail:</b> {{ patientEmail }}</div>
+      <div><b>Blood Group:</b> {{ bloodGroup }}</div>
+      <div><b>Height:</b> {{ height }} cm</div>
+      <div><b>Weight:</b> {{ weight }} Kg</div>
+
+      <div
+        class="button-group"
+        style="display: flex; justify-content: flex-end"
+      ></div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="rounded-card" style="flex: 1; margin-left: 10px">
+    <mat-card-content class="card-content">
+      <mat-card-title>Health Records </mat-card-title>
+      <div><b>Last consultation:</b> {{ visitDate }}</div>
+      <div><b>Allergy:</b> {{ allergy }}</div>
+      <div><b>Body Temperature:</b> {{ bodyTemperature }} &#8457;</div>
+      <div><b>Blood Pressure:</b> {{ systolic }}/{{ diastolic }} mmHg</div>
+      <div><b>Respiration Rate:</b> {{ respirationRate }}</div>
+      <div><b>Key Notes:</b> {{ keyNotes }}</div>
+      <div class="button-group">
+        <div style="margin-left: auto">
+          <button
+            mat-raised-button
+            color="primary"
+            style="margin: auto"
+            (click)="openAddPatientDialog()"
+          >
+            Add Visit Details
+          </button>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<mat-card-header>
+  <mat-card-title> Previous Patient Visit History </mat-card-title>
+</mat-card-header>
+<mat-card class="table-card">
+  <mat-table
+    #table
+    [dataSource]="dataSource"
+    matSort
+    class="mat-cell"
+    id="ptable"
+  >
+    <ng-container matColumnDef="select">
+      <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+      <mat-cell *matCellDef="let row"> </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="visitId">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"
+        >Visit ID</mat-header-cell
+      >
+      <mat-cell *matCellDef="let row" class="square-box">
+        {{ row.visitId }}</mat-cell
+      >
+    </ng-container>
+    <ng-container matColumnDef="date">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"
+        >Date</mat-header-cell
+      >
+      <mat-cell *matCellDef="let row"> {{ row.createdDate | date: 'dd-MM-yyyy' }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="test">
+      <mat-header-cell *matHeaderCellDef class="table-header"
+        >Tests done</mat-header-cell
+      >
+      <mat-cell *matCellDef="let element">
+        <mat-icon
+          matPrefix
+          class="my-icon"
+          (click)="testPrescriptionTable(element.visitId)"
+          color="primary"
+          >open_in_new</mat-icon
+        >
+      </mat-cell>
+    </ng-container>
+
+    <!-- Email Column -->
+    <ng-container matColumnDef="prescription">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"
+        >Prescription</mat-header-cell
+      >
+      <mat-cell *matCellDef="let element" color="primary">
+        <mat-icon
+          matPrefix
+          class="material-icons"
+          (click)="showPrescriptionTable(element.visitId)"
+          color="warn"
+          >open_in_new</mat-icon
+        >
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 50]" showFirstLastButtons></mat-paginator>
+</mat-card>

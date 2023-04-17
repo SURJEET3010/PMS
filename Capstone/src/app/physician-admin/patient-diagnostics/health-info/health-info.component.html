@@ -1,0 +1,203 @@
+<mat-card>
+  <button
+    mat-stroked-button
+    class="bottom-buttons"
+    color="primary"
+    style="margin-left: 140vh"
+    (click)="openPrescription()"
+  >
+    Add Prescription
+  </button>
+
+  <button
+    mat-stroked-button
+    class="bottom-buttons"
+    color="primary"
+    style="margin-left: 140vh"
+    (click)="openviewprescription()"
+  >
+    View Prescription
+  </button>
+
+  <mat-card-header>
+    <mat-card-title
+      style="color: #143ba8; font-weight: 800; font-size: x-large"
+    >
+      Patient Data
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <br />
+    <div class="card-content-container">
+      <div class="personal-info">
+        <h4><b>Personal Info:</b></h4>
+
+        <p><b> Name:</b> {{ patientName | titlecase }}</p>
+        <p><b> Age:</b> {{ patientAge }}</p>
+        <p><b>Gender:</b> {{ patientGender }}</p>
+        <p><b>Email:</b> {{ patientEmail }}</p>
+        <p><b>DOB:</b> {{ dob }}</p>
+        <p><b>ADDRESS:</b> {{ address }}</p>
+      </div>
+      <div class="health-info">
+        <h4><b>Health Info:</b></h4>
+        <p><b>Blood Group:</b> {{ bloodGroup }}</p>
+        <p><b>Blood Pressure:</b> {{ bpSystollic }} / {{ bpDiastolic }}</p>
+        <p><b>Body Temperature:</b> {{ bodyTemperature }}</p>
+        <p><b>Respiration Rate:</b> {{ respirationRate }}</p>
+        <p><b>Body Weight:</b> {{ weight }}</p>
+        <p><b>Allergy:</b> {{ allergy }}</p>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+<!-- <button mat-raised-button color="primary" (click)="onUpdateClick()">
+  previous records
+</button> -->
+
+<mat-card-header style="color: #143ba8; font-weight: 800; font-size: x-large">
+  <mat-card-title style="padding-top: 25px; padding-left: 10px"
+    ><b> Current visit Test </b>
+  </mat-card-title>
+  <!-- 
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="openObservation()"
+    style="margin-left: 120vh"
+  >
+    New Observations
+  </button> -->
+
+  <!-- <button
+    mat-fab
+    color="primary"
+    (click)="openObservation()"
+    style="margin-left: 140vh"
+    aria-label="New Observation"
+  >
+  <mat-icon>add</mat-icon>
+  </button> -->
+  <button
+    mat-raised-button
+    style="
+      margin-left: 140vh;
+      margin-top: 5vh;
+      display: flex;
+      justify-content: space-between;
+    "
+    (click)="openObservation()"
+    color="primary"
+  >
+    Add Test
+  </button>
+</mat-card-header>
+<mat-card class="table-card">
+  <mat-table
+    #table
+    [dataSource]="dataSource"
+    matSort
+    class="mat-cell"
+    id="ptable"
+  >
+    <ng-container matColumnDef="select">
+      <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+      <mat-cell *matCellDef="let row"> </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="testId">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"
+        >TestId</mat-header-cell
+      >
+      <mat-cell *matCellDef="let row" class="square-box">
+        {{ row.testId }}</mat-cell
+      >
+    </ng-container>
+
+    <!-- <ng-container matColumnDef="visitId">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"
+        >visitId</mat-header-cell
+      >
+      <mat-cell *matCellDef="let row"> {{ row.visitId }}</mat-cell>
+    </ng-container> -->
+
+    <ng-container matColumnDef="testName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"
+        >Test name
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{ row.testName }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="notes">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"
+        >Notes</mat-header-cell
+      >
+      <mat-cell *matCellDef="let row"> {{ row.notes }}</mat-cell>
+    </ng-container>
+    <!-- Departmnet Column -->
+    <ng-container matColumnDef="result">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"
+        >Actual Result</mat-header-cell
+      >
+      <mat-cell *matCellDef="let row"> {{ row.result }}</mat-cell>
+    </ng-container>
+
+    <!-- <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"
+        >Actions</mat-header-cell
+      >
+      <mat-cell *matCellDef="let row"> {{ row.action }}</mat-cell>
+    </ng-container> -->
+
+    <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef class="table-header"
+        >Actions</mat-header-cell
+      >
+      <mat-cell *matCellDef="let element">
+        <button
+          mat-stroked-button
+          color="warn"
+          (click)="deleteTest(element.testId)"
+        >
+          Delete
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 25, 50]"
+      showFirstLastButtons
+    ></mat-paginator
+    ><mat-paginator
+      [length]="100"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      aria-label="Select page"
+    >
+    </mat-paginator>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+</mat-card>
+
+<button
+  mat-raised-button
+  class="bottom-buttons"
+  color="primary"
+  style="margin-left: 3vh; width: 30vh"
+  (click)="onUpdateClick()"
+>
+  previous records
+</button>
+
+<button
+  mat-raised-button
+  class="bottom-buttons"
+  color="warn"
+  style="margin-left: 152vh; margin-top: -7.5vh; width: 20vh"
+  (click)="close()"
+>
+  Close
+</button>
+
+<router-outlet></router-outlet>

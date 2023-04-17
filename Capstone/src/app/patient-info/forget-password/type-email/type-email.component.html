@@ -1,0 +1,23 @@
+<mat-toolbar color="primary" style="display: flex; justify-content: center; font-size: 45px; font-weight: bold;">
+    <span class="fill-remaining-space" style="text-align:center">PMS - Help</span>
+</mat-toolbar>
+<form [formGroup]="emailForm">
+    <div class="container">
+        <mat-card>
+            <mat-card-title>Enter your email</mat-card-title>
+            <mat-card-content>
+                <div class="example-container">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Enter your email</mat-label>
+                        <input matInput placeholder="pat@example.com" formControlName="email" required>
+                        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="form-actions">
+                    <button mat-raised-button color="primary" (click)="sendotp();">Send
+                        OTP</button>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</form>

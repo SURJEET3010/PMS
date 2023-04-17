@@ -1,0 +1,86 @@
+<div matDialogTitle style="color: #143ba8">
+  <h1>Add Test Details</h1>
+</div>
+
+<form (ngSubmit)="addTest()">
+  <div mat-dialog-content class="content">
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>testName*</mat-label>
+        <input
+          matInput
+          placeholder="Test Name"
+          name="testName"
+          [(ngModel)]="pForm.testName"
+        /> </mat-form-field
+      ><ng-container matColumnDef="testName">
+        <th mat-header-cell *matHeaderCellDef>Test Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.testName }}</td>
+      </ng-container>
+
+      <div>
+        <div class="row">
+          <mat-form-field appearance="outline">
+            <mat-label>Result*</mat-label>
+            <input
+              matInput
+              placeholder="Result"
+              name="result"
+              [(ngModel)]="pForm.result"
+            /> </mat-form-field
+          ><ng-container matColumnDef="result">
+            <th mat-header-cell *matHeaderCellDef>Result</th>
+            <td mat-cell *matCellDef="let element">{{ element.result }}</td>
+          </ng-container>
+        </div>
+
+        <div>
+          <div class="row">
+            <mat-form-field appearance="outline">
+              <mat-label>Notes*</mat-label>
+              <input
+                matInput
+                placeholder="Notes"
+                name="notes"
+                [(ngModel)]="pForm.notes"
+              /> </mat-form-field
+            ><ng-container matColumnDef="notes">
+              <th mat-header-cell *matHeaderCellDef>Notes</th>
+              <td mat-cell *matCellDef="let element">{{ element.notes }}</td>
+            </ng-container>
+          </div>
+
+          <br />
+          <div mat-dialog-actions class="action">
+            <!-- <button mat-raised-button color="primary" (click) ="addPrescription()" >Save</button> -->
+
+            <button mat-raised-button color="primary" type="submit">
+              Save
+            </button>
+            <button mat-raised-button color="Warn" matDialogClose>
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<!-- <div>
+<label for="visitId">Visit ID:</label>
+<input type="text" id="visitId" [(ngModel)]="visitId">
+</div>
+<div>
+<label for="medication">Medication:</label>
+<input type="text" id="medication" [(ngModel)]="prescriptionDetails.medication">
+</div>
+<div>
+<label for="dosage">Dosage:</label>
+<input type="text" id="dosage" [(ngModel)]="prescriptionDetails.dosage">
+</div>
+<div>
+<label for="frequency">Frequency:</label>
+<input type="text" id="frequency" [(ngModel)]="prescriptionDetails.frequency">
+</div>
+<button (click)="addPrescription()">Save</button> -->

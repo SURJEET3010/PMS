@@ -1,0 +1,87 @@
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@200;600&family=Roboto&display=swap');
+  .mat-card-doctors,
+  .mat-card-patients,
+  .mat-card-nurses,
+  .mat-card-appointments {
+    background-color: white ;
+    color: black;
+  }
+  
+  .example-card {
+    flex-basis: calc(23% - 30px);
+    margin-left: 20px;
+    margin-bottom: 20px;
+    margin-top: 30px;
+    margin-right: 30px;
+  }
+  
+  .example-header-image {
+    width: 60px;
+    height: 40px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-right: 20px;
+  }
+  
+  .mat-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .mat-card-title {
+    margin: 0;
+  }
+  
+  
+  .card {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.1);
+  }
+  .mat-card1{
+    margin-top: 30px;
+    margin-right: 30px;
+  }
+  
+  .image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .mat-image{
+    width: 600px; 
+    height: auto;
+  }
+  
+  .text {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 20px;
+    color: black;
+  }
+  
+  h2 {
+    font-family:'Roboto',sans-serif;
+    font-size: 40px;
+    color: rgb(21, 155, 173);
+  }
+  p.text2 {
+    font-family:'Roboto',sans-serif;
+    font-size: 20px;
+  }
+  

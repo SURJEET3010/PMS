@@ -1,0 +1,114 @@
+<form [formGroup]="patientForm">
+  <div mat-dialog-title>
+    <h1>Registration Form</h1>
+    <h4>only for new patient</h4>
+  </div>
+  <div mat-dialog-content class="content">
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Title</mat-label>
+        <mat-select formControlName="title">
+          <mat-option *ngFor="let val of title" [value]="val"
+            >{{ val }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="firstName" placeholder="FirstName" />
+      </mat-form-field>
+      <mat-error *ngIf="patientForm.controls['firstName'].hasError('required')">
+      </mat-error>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="lastName" placeholder="Lastname" />
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Date Of Birth</mat-label>
+        <input
+          matInput
+          formControlName="dob"
+          [matDatepicker]="picker"
+          [max]="today"
+          (dateChange)="formattedDate($event)"
+        />
+
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          formControlName="email"
+          type="email"
+          placeholder="exampl@mail.com"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-radio-group formControlName="gender" aria-label="Select an option">
+        <mat-label><b>Gender</b></mat-label>
+        <mat-radio-button value="male">Male</mat-radio-button>
+        <mat-radio-button value="female">Female</mat-radio-button>
+        <mat-radio-button value="others">Others</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          formControlName="password"
+          type="password"
+          placeholder="***"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Confirm Password</mat-label>
+        <input
+          matInput
+          formControlName="confirmPassword"
+          type="password"
+          placeholder="***"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Contact Number*</mat-label>
+        <input matInput formControlName="contactNumber" placeholder="Contact" />
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Address</mat-label>
+        <input matInput formControlName="address" placeholder="Address" />
+      </mat-form-field>
+    </div>
+
+    <div mat-dialog-actions class="action">
+      <button mat-raised-button color="primary" (click)="registerForm()">
+        Register
+      </button>
+      <button mat-raised-button color="basic" (click)="onClose()">
+        Cancel
+      </button>
+    </div>
+  </div>
+</form>

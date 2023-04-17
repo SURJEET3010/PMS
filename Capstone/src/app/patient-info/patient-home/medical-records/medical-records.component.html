@@ -1,0 +1,80 @@
+<mat-card-header>
+    <mat-card-title> Previous Visit History </mat-card-title>
+  </mat-card-header>
+  <mat-card class="table-card">
+    <mat-table
+      #table
+      [dataSource]="dataSource"
+      matSort
+      class="mat-cell"
+      id="ptable"
+    >
+      <ng-container matColumnDef="select">
+        <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+        <mat-cell *matCellDef="let row"> </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="visitId">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"
+          >Visit ID</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row" class="square-box">
+          {{ row.visitId }}</mat-cell
+        >
+      </ng-container>
+      <!-- <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"
+          >Physician Mail</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row"> {{ row.physicianEmail }}</mat-cell>
+      </ng-container> -->
+      <!-- Departmnet Column -->
+      <!-- <ng-container matColumnDef="date">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"
+          >Appointment Date</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row"> {{ row.createdDate }}</mat-cell>
+      </ng-container> -->
+  
+      <ng-container matColumnDef="test">
+        <mat-header-cell *matHeaderCellDef class="table-header"
+          >Tests done</mat-header-cell
+        >
+        <mat-cell *matCellDef="let element">
+          <mat-icon
+            matPrefix
+            class="my-icon"
+            (click)="testPrescriptionTable(element.visitId)"
+            >open_in_new</mat-icon
+          >
+        </mat-cell>
+      </ng-container>
+  
+      <!-- Email Column -->
+      <ng-container matColumnDef="prescription">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"
+          >Prescriptions</mat-header-cell
+        >
+        <mat-cell *matCellDef="let element" color="primary">
+          <mat-icon
+            matPrefix
+            class="material-icons"
+            (click)="showPrescriptionTable(element.visitId)"
+            >open_in_new</mat-icon
+          >
+        </mat-cell>
+      </ng-container>
+  
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 25, 50]"
+        showFirstLastButtons
+      ></mat-paginator>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 25, 50]"
+      showFirstLastButtons
+    ></mat-paginator>
+  </mat-card>
+  

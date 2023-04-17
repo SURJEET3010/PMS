@@ -1,0 +1,54 @@
+<!-- <mat-toolbar color="primary" style="display: flex; justify-content: center; font-size: 45px; font-weight: bold;">
+    <span class="fill-remaining-space" style="text-align:center">PMS - Help</span>
+</mat-toolbar>
+<form [formGroup]="numberForm">
+    <div class="container">
+        <mat-card>
+            <mat-card-title>Enter your OTP</mat-card-title>
+            <mat-card-content>
+                <div class="example-container">
+                    <mat-form-field appearance="outline">
+                        <mat-label> OTP</mat-label> -->
+<!-- <input matInput formControlName="otp" required> -->
+<!-- <input matInput [formControl]="numberInput" formControlName="numberInput" required> -->
+<!-- <mat-error *ngIf="numberInput.invalid">{{getErrorMessage()}}</mat-error> -->
+<!-- </mat-form-field>
+                </div>
+                <div class="form-actions">
+            
+
+                    <button mat-raised-button color="primary" [disabled]="numberInput.invalid" (click)="VerifyOTP()">
+                        Verify
+                    </button>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</form> -->
+
+<mat-toolbar color="primary" style="display: flex; justify-content: center; font-size: 45px; font-weight: bold;">
+    <span class="fill-remaining-space" style="text-align:center">PMS - Help</span>
+</mat-toolbar>
+
+<form [formGroup]="numberForm">
+    <div class="container">
+        <mat-card>
+            <mat-card-title>Enter your OTP</mat-card-title>
+            <mat-card-content>
+                <div class="example-container">
+                    <mat-form-field appearance="outline">
+                        <mat-label>OTP</mat-label>
+                        <input matInput formControlName="otp" required>
+                        <mat-error *ngIf="numberForm.controls['otp'].invalid">Please enter a valid
+                            OTP</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="form-actions">
+                    <button mat-raised-button color="primary"
+                     [disabled]="numberForm.controls['otp'].invalid"  
+                     (click)="VerifyOTP()" >Verify</button>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</form>

@@ -1,0 +1,114 @@
+<br><br>
+<div fxLayout="row wrap" fxLayoutAlign="center center">                   <!-- Main Area 100% Wide -->
+  <div class="Box1" fxLayout="row wrap" fxFlex="100%" fxFlex.xs="100%"  
+    fxFlex.sm="100%" fxLayoutAlign="center center" fxLayoutGap="10px">    <!-- Sub-Area1 70% Wide -->
+    <button mat-button> Button1 </button>
+    <button mat-button> Button2 </button>
+    <div fxFlex fxShow fxHide.xs></div>                                   <!-- Divide remaining space -->
+    <button mat-button fxShow fxHide.xs style="margin-left:20px;"> Login </button>                <!-- Do not show this button in Laptop/Desktop -->
+    <button fxHide fxShow.xs>
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+
+
+  <!-- <div fxLayout="row wrap" fxFlex="100%">                               
+    <br>
+  </div>
+
+  <div fxLayout="row wrap" fxFlex="70%" fxFlex.xs="100%" fxFlex.sm="100%" fxLayoutGap="20px"  fxLayoutGap.xs="0px"
+    fxLayoutAlign="center center">                                       
+    <div class="Box2" fxLayout="row wrap" fxFlex="49%" fxFlex.xs="100%"   
+      fxFlex.sm="100%" fxLayoutAlign="center center">                  
+      <a>This is Box-2A</a>
+    </div>
+    <div class="Box3" fxLayout="row wrap" fxFlex="49%" fxFlex.xs="100%" 
+      fxFlex.sm="100%" fxLayoutAlign="center center">                    
+      <img src="https://img.freepik.com/free-vector/doctor-character-background_1270-84.jpg?w=740&t=st=1679601742~exp=1679602342~hmac=7a946945d22bb4dc256889a0fe9c659f150f115cc300466eef3329f5544d6ad5">
+    </div>
+  </div>
+</div> -->
+
+ <!-- Hero -->
+<div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxFill class="main-content">
+  <mat-card fxFlex="100%" fxFlex.gt-sm="50%"  class="mat-card-no-shadow content-mat">
+
+    <mat-card-content class="section-card-top">
+      <h2 mat-card-title id ="tagline"><b>Giving Power<br><br> To your Health</b></h2>
+      <br>
+      <br>
+
+      <p mat-card-text id="description">Together we achieve stronger, healthier lives.<br>
+         We'll help you find your way. Your health is  not only for you,
+          it will help you help others too.</p>
+
+    </mat-card-content>
+    <br>
+    <mat-card-actions id="section-btn">
+      <button mat-raised-button style="width:auto;">Make Appointment</button>
+    </mat-card-actions>
+
+  </mat-card>
+
+  <mat-card fxFlex="100%" fxFlex.gt-sm="50%"  class="mat-card-no-shadow image-mat">
+
+    <!-- <img src="https://img.freepik.com/free-vector/doctor-character-background_1270-84.jpg?w=740&t=st=1679601742~exp=1679602342~hmac=7a946945d22bb4dc256889a0fe9c659f150f115cc300466eef3329f5544d6ad5"> -->
+    <img src="data:image/png;base64,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">
+  </mat-card>
+</div>
+
+<!-- hero-end -->
+<br><br>
+
+<!-- section -->
+
+<br>
+<div class="card-container" fxLayout="row" fxLayoutAlign="space-around center" fxLayout.xs="column" fxLayoutAlign.xs="center center" fxLayoutGap.xs="16px" fxLayoutGap="16px" style="padding: 20px;">
+  <mat-card>
+    <img mat-card-image src="https://via.placeholder.com/300x200.png?text=Card+1" alt="Card 1">
+    <mat-card-content class="section-card">
+      <h2 mat-card-title>Card 1</h2>
+      <p mat-card-subtitle>Description of Card 1</p>
+      <p mat-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </mat-card-content>
+  </mat-card>
+  <mat-card>
+    <!-- <img mat-card-image src="https://via.placeholder.com/300x200.png?text=Card+2" alt="Card 2"> -->
+    <mat-card-content class="section-card">
+      <h2 mat-card-title>Card 2</h2>
+      <p mat-card-subtitle>Description of Card 2</p>
+      <p mat-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <button mat-raised-button style="width:auto;">Make Appointment</button>
+    </mat-card-content>
+  </mat-card>
+  <mat-card>
+    <img mat-card-image src="https://via.placeholder.com/300x200.png?text=Card+3" alt="Card 3">
+    <mat-card-content class="section-card">
+      <h2 mat-card-title>Card 3</h2>
+      <p mat-card-subtitle>Description of Card 3</p>
+      <p mat-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </mat-card-content>
+  </mat-card>
+  <mat-card>
+    <img mat-card-image src="https://via.placeholder.com/300x200.png?text=Card+4" alt="Card 4">
+    <mat-card-content class="section-card">
+      <h2 mat-card-title>Card 4</h2>
+      <p mat-card-subtitle>Description of Card 4</p>
+      <p mat-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+
+<!-- footer -->
+
+<mat-toolbar color="primary" class="footer">
+  <span>© 2023 My Medical Website</span> &nbsp; &nbsp;
+  <span class="spacer"></span> &nbsp;&nbsp;
+  <span>Contact Us</span> &nbsp;&nbsp;
+  <span class="spacer"></span> &nbsp;&nbsp;
+  <span>Privacy Policy</span> &nbsp;&nbsp;
+</mat-toolbar>
+
+<!-- <app-footer></app-footer> -->
+

@@ -1,0 +1,138 @@
+<mat-card class="rounded-card">
+  <mat-card-content class="card-content">
+    <!-- <b> Doctors</b> -->
+
+    <mat-form-field
+      class="example-full-width"
+      appearance="fill"
+      style="margin-left: 128vh"
+    >
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="picker" />
+      <mat-hint>DD/MM/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker">
+        <mat-icon matDatepickerToggleIcon>event</mat-icon>
+      </mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-card-title
+      style="
+        color: #143ba8;
+        padding-bottom: 20px;
+        margin-top: -50px;
+        font-size: x-large;
+      "
+    >
+      &nbsp; &nbsp;Today's All Appointment
+    </mat-card-title>
+
+    <mat-card class="table-card">
+      <mat-form-field>
+        <mat-label>Filter</mat-label>
+        <input
+          matInput
+          (keyup)="applyFilter($event)"
+          placeholder="Ex. Input"
+          #input
+        />
+      </mat-form-field>
+      <mat-table
+        #table
+        [dataSource]="dataSource"
+        matSort
+        class="mat-cell"
+        id="ptable"
+      >
+        <ng-container matColumnDef="select">
+          <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+          <mat-cell *matCellDef="let row"> </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="appointmentId">
+          <mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            class="table-header"
+            >Appointment ID</mat-header-cell
+          >
+          <mat-cell *matCellDef="let row" class="square-box">
+            {{ row.appointmentId }}</mat-cell
+          >
+        </ng-container>
+
+        <ng-container matColumnDef="patientId">
+          <mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            class="table-header"
+            >Patient Id</mat-header-cell
+          >
+          <mat-cell *matCellDef="let row"> {{ row.patientId }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="patientName">
+          <mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            class="table-header"
+            >Patient Name</mat-header-cell
+          >
+          <mat-cell *matCellDef="let row"> {{ row.patientName }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="appointmentDate">
+          <mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            class="table-header"
+            >Appointment Date</mat-header-cell
+          >
+          <mat-cell *matCellDef="let row"> {{ row.appointmentDate }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="reason">
+          <mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            class="table-header"
+            >Reason</mat-header-cell
+          >
+          <mat-cell *matCellDef="let row"> {{ row.reason }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="acceptance">
+          <mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            class="table-header"
+            >Acceptance</mat-header-cell
+          >
+          <mat-cell *matCellDef="let row"> {{ row.acceptance }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef class="table-header"
+            >Actions</mat-header-cell
+          >
+          <mat-cell *matCellDef="let element">
+            <button
+              mat-raised-button
+              color="primary"
+              (click)="beforeUpdate(element.patientId)"
+            >
+              Update
+            </button>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+      </mat-table>
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 25, 50]"
+        showFirstLastButtons
+      ></mat-paginator>
+    </mat-card> </mat-card-content
+></mat-card>
+<router-outlet></router-outlet>

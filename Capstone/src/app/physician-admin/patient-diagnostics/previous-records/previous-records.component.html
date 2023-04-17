@@ -1,0 +1,94 @@
+<mat-card class="rounded-card">
+  <mat-card-content class="card-content">
+    <!-- <b> Doctors</b> -->
+    <mat-card-title style="margin-left: 2.5vh; color: #143ba8">
+      Previous patient visit history
+    </mat-card-title>
+
+    <mat-card class="table-card">
+      <mat-form-field>
+        <mat-label>Filter</mat-label>
+        <input
+          matInput
+          (keyup)="applyFilter($event)"
+          placeholder="Ex. Input"
+          #input
+        />
+      </mat-form-field>
+      <mat-table
+        #table
+        [dataSource]="dataSource"
+        matSort
+        class="mat-cell"
+        id="ptable"
+      >
+        <ng-container matColumnDef="select">
+          <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+          <mat-cell *matCellDef="let row"> </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="id">
+          <mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            class="table-header"
+            >Visit ID</mat-header-cell
+          >
+          <mat-cell *matCellDef="let row" class="square-box">
+            {{ row.visitId }}</mat-cell
+          >
+        </ng-container>
+
+        <!-- <ng-container matColumnDef="observedBy">
+        <mat-header-cell *matHeaderCellDef mat-sort-header  class="table-header">Physician Email</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.physicianEmail}}</mat-cell>
+      </ng-container> -->
+
+        <!-- <ng-container matColumnDef="date">
+        <mat-header-cell *matHeaderCellDef mat-sort-header  class="table-header">Date</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.date}}</mat-cell>
+      </ng-container> -->
+
+        <ng-container matColumnDef="test">
+          <mat-header-cell *matHeaderCellDef class="table-header"
+            >Test done</mat-header-cell
+          >
+          <mat-cell *matCellDef="let element">
+            <mat-icon
+              matPrefix
+              class="my-icon"
+              (click)="opentest(element.visitId)"
+              color="primary"
+              >open_in_new</mat-icon
+            >
+          </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="prescription">
+          <mat-header-cell *matHeaderCellDef class="table-header"
+            >Prescription</mat-header-cell
+          >
+          <mat-cell *matCellDef="let element">
+            <mat-icon
+              matPrefix
+              class="my-icon"
+              (click)="openprescribe(element.visitId)"
+              color="warn"
+              >open_in_new</mat-icon
+            >
+          </mat-cell>
+        </ng-container>
+
+        <!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 50]" showFirstLastButtons></mat-paginator> -->
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+      </mat-table>
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 25, 50]"
+        showFirstLastButtons
+      ></mat-paginator>
+    </mat-card>
+
+    <!-- <button mat-raised-button color="warn" (click)="close()">Close</button> -->
+  </mat-card-content></mat-card
+>

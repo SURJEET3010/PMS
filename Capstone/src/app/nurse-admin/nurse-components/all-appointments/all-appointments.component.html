@@ -1,0 +1,108 @@
+<head>
+  <!-- Add Material UI CSS -->
+  <link
+    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet"
+  />
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.3.0/material.indigo-pink.min.css"
+    rel="stylesheet"
+  />
+
+  <!-- Add Material UI JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.3.0/material.min.js"></script>
+</head>
+
+<style>
+  .mdl-card__title-text {
+    font-size: 20px;
+    line-height: 24px;
+  }
+</style>
+
+<mat-card-header>
+  <mat-card-title> All Appointments </mat-card-title>
+</mat-card-header>
+
+<mat-form-field appearance="outline">
+  <mat-label>Filter Date</mat-label>
+  <input
+    matInput
+    (keyup)="applyFilter($event)"
+    #input
+    [matDatepicker]="picker"
+    (dateChange)="onDateChange($event)"
+    [(ngModel)]="selectedDate"
+    placeholder="Filter Data"
+  />
+  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
+<mat-card class="table-card">
+  <mat-table
+    #table
+    [dataSource]="dataSource"
+    matSort
+    class="mat-cell"
+    id="ptable"
+  >
+    <ng-container matColumnDef="patientId">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"
+        >Patient Id</mat-header-cell
+      >
+      <mat-cell *matCellDef="let row"> {{ row.patientId }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="patientName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"
+        >Patient Name</mat-header-cell
+      >
+      <mat-cell *matCellDef="let row"> {{ row.patientName }}</mat-cell>
+    </ng-container>
+    <!-- Departmnet Column -->
+    <ng-container matColumnDef="appointmentDate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"
+        >Appointment Date</mat-header-cell
+      >
+      <mat-cell *matCellDef="let row"> {{ row.appointmentDate }}</mat-cell>
+    </ng-container>
+  
+    <ng-container matColumnDef="reason">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"
+        >Key Notes from Patient</mat-header-cell
+      >
+      <mat-cell *matCellDef="let row"> {{ row.reason }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef class="table-header"
+        >Diagnosis Info</mat-header-cell
+      >
+      <mat-cell *matCellDef="let element">
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="patientInfo(element.patientId, element.appointmentId)"
+        >
+          Add Info
+          <!-- <mat-icon> info icon</mat-icon> -->
+        </button>
+      </mat-cell>
+    </ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">
+        No data matching the filter "{{ input.value }}"
+      </td>
+    </tr>
+  </mat-table>
+  <mat-paginator
+  [pageSizeOptions]="[5, 10, 25, 50]"
+  showFirstLastButtons
+></mat-paginator>
+</mat-card>

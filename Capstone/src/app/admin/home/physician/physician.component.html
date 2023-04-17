@@ -1,0 +1,60 @@
+  <mat-card class="rounded-card">
+    <mat-card-content class="card-content">
+     <!-- <b> Doctors</b> -->
+     <mat-card-title class="header-text">
+       All Doctors
+    </mat-card-title>
+
+      <mat-form-field appearance="outline" class="search-box">
+        <!-- <input type="text" matInput placeholder="Search"> -->
+        <input matInput (keyup)="applyFilter($event)" placeholder="search" #input>
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+      <div class="mat-table-container">
+        <mat-card>
+        <mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="id">
+      <mat-header-cell mat-sort-header *matHeaderCellDef> Physician ID </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.physicianId}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <mat-header-cell mat-sort-header *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.physicianName}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="department">
+      <mat-header-cell mat-sort-header *matHeaderCellDef> Department </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.speciality}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="startDate">
+      <mat-header-cell mat-sort-header *matHeaderCellDef  > Available Start Date </mat-header-cell>
+      <input matInput [min] = "today">
+      <mat-cell *matCellDef="let row" > {{row.startDate}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="endDate">
+      <mat-header-cell mat-sort-header *matHeaderCellDef  > Available End Date </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.endDate}} </mat-cell>
+    </ng-container>
+
+    <!-- <ng-container matColumnDef="status">
+      <mat-header-cell mat-sort-header *matHeaderCellDef> Status </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.availability}} </mat-cell>
+    </ng-container> -->
+
+    <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef class="table-header">Actions</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button mat-icon-button color="primary"(click)="openEditDialog(row)" >
+          <mat-icon>edit</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator> -->
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 50]" showFirstLastButtons></mat-paginator>
+        </mat-card>
+       </div>
+       
+    </mat-card-content>
+  </mat-card>

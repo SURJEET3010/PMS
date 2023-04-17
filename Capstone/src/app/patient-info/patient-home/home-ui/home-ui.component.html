@@ -1,0 +1,84 @@
+
+
+<mat-card class="mat-card1">
+    <mat-card-content>
+      <div class="card">
+        <div class="image">
+          <!-- <svg matCardImage=""> </svg>  -->
+          <img  class="mat-image" src="https://img.freepik.com/free-vector/patient-being-examined-by-doctor-clinic-illustrated_23-2148865134.jpg?w=996&t=st=1680379995~exp=1680380595~hmac=b05f5776b6c42815fd19412d914336e16199da485574c79da5ef0ea156285451" alt="Image ">
+        </div>
+        <div class="text">
+          <h2>Welcome, {{ patientName }}</h2>
+          <p class="text2">{{ description }}</p>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card id="card" style=" margin-top: 30px; background-color:white; margin-right: 20px; box-shadow: none;">
+    <mat-card-title style="font-size: 24px; font-family: roboto,sans-serif; color:rgb(19, 95, 226); margin-left: 5px;"> Your Previous Health  Records</mat-card-title>
+  </mat-card>
+  
+    <div class="card-container">
+      <mat-card class="example-card mat-card-doctors">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>Blood-pressure</mat-card-title>
+          <mat-card-subtitle><h4 style="color: blue;">110/70</h4></mat-card-subtitle>
+          <img mat-card-image src="assets/images/blood-pressure.png">
+        </mat-card-header>
+        <mat-card-content>
+          <!-- <h1>{{doctorCount}}</h1> -->
+          <!-- <p>{{longText}}</p> -->
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="example-card mat-card-patients ">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>Blood-count</mat-card-title>
+          <mat-card-subtitle><h4 style="color: blue;">9456/ml</h4></mat-card-subtitle>
+          <img mat-card-image src="assets/images/blood-count.png">
+        </mat-card-header>
+        <mat-card-content>
+          <!-- <h1>{{patientCount}}</h1> -->
+          <!-- <p>{{longText}}</p> -->
+        </mat-card-content>
+        <mat-card-actions>
+        </mat-card-actions>
+        <mat-card-footer>
+        </mat-card-footer>
+      </mat-card>
+      <mat-card class="example-card mat-card-nurses">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>Heart-rate</mat-card-title>
+          <mat-card-subtitle><h4 style="color: blue;">650</h4></mat-card-subtitle>
+          <img mat-card-image src="assets/images/heart-rate.png">
+        </mat-card-header>
+        <mat-card-content>
+          <!-- <h1>{{nurseCount}}</h1> -->
+          <!-- <p>{{longText}}</p> -->
+        </mat-card-content>
+        <mat-card-actions>
+        </mat-card-actions>
+        <mat-card-footer>
+        </mat-card-footer>
+      </mat-card>
+      <mat-card class="example-card mat-card-appointments">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>Glucose</mat-card-title>
+          <mat-card-subtitle><h4 style="color: blue;">88-75</h4></mat-card-subtitle>
+          <img mat-card-image src="assets/images/glucose.png">
+        </mat-card-header>
+        <mat-card-content>
+          <!-- <h1>{{appointmentCount}}</h1> -->
+          <!-- <p>{{longText}}</p> -->
+        </mat-card-content>
+        <mat-card-actions>
+        </mat-card-actions>
+        <mat-card-footer>
+          <!-- <mat-progress-bar mode="indeterminate"></mat-progress-bar> -->
+        </mat-card-footer>
+      </mat-card>
+    </div>
+     

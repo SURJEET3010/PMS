@@ -1,0 +1,105 @@
+button{
+  margin-left: 10px; 
+}
+.rounded-card {
+  border-radius: 5px;  
+   padding: 12px; 
+  margin: 12px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3); 
+ } 
+.button-group {
+  display: flex;
+  align-items:self-start;
+  float: right;
+}
+.icon-button-demo {
+  margin-left: 10px;
+} 
+.button {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 8px;
+} */
+
+#pTable{
+  padding: 100px;
+}
+.table-card {
+  border-radius: 5px;
+  padding: 20px; 
+  margin: 20px; 
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3); 
+}
+.active {
+  background-color: #f5f5f5;
+}
+
+
+
+button.mat-icon-button {
+height: 24px; 
+width: 24px;
+font-size: 12px;
+}
+
+.table-header {
+font-weight: bold;
+text-align: center;
+}
+
+.mat-column-email,
+.mat-column-mobile,
+.mat-column-department,
+.mat-column-name {
+flex: 1;
+min-width: 0;
+}
+
+.mat-column-email {
+flex-basis: 150px;
+}
+
+.mat-column-department {
+flex-basis: 100px;
+}
+
+.mat-cell,
+.mat-header-cell {
+text-align: center;
+}
+
+.mat-header-row,
+.mat-row {
+align-items: center;
+}
+.bottom-buttons{
+  height: 24px; 
+  width: 24px;
+  font-size: 12px;
+  margin-right: 10px;
+  /* margin-left: 20px; */
+
+}
+
+
+.button-container {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+.card-content-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.personal-info {
+  flex-basis: 40%;
+  padding-right: 2em;
+}
+
+.health-info {
+  flex-basis: 40%;
+  padding-left: 2em;
+}

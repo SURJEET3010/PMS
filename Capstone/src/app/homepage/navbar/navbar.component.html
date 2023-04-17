@@ -1,0 +1,171 @@
+<mat-toolbar color="primary">
+  <div class="logo-container">
+    <img src="assets/images/logo2.png" alt="Logo" class="logo">
+    <h1 class="logo-text">PMS</h1>
+  </div>
+  <div class="menu-container">
+
+
+  
+    
+    <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+  
+        <button  mat-stroked-button  (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })">
+        Log out
+      </button>
+    </ng-container>
+
+
+    <ng-template #loggedOut>
+      <button class="button1" mat-stroked-button  (click)="auth.loginWithRedirect();">Login</button>
+    </ng-template>
+
+  </div>
+</mat-toolbar>
+
+<mat-card>
+<div class="wrapper">
+  <mat-card class="paragraph-card mat-card-no-shadow">
+    <div style="display: flex; flex-direction: column; align-items: center; width: 696px; height: 400px; text-align: center; background-color:#F1F5FE;">
+      <div style="width: 100%; text-align: justify; font-size: 16px; line-height: 1.5; font-family: sans-serif; margin-left: auto; margin-right: auto;">
+        <h1 style="font-size: 61px; font-weight: bold; font-family: 'Heebo', sans-serif; line-height: 1.2; margin-left: auto; margin-right: auto;">
+          Empowering you to live <br>Healthy life
+                </h1>
+        <p>
+          We are committed to delivering exceptional outcomes for our patients,
+           every time, through a combination of medical expertise and cutting-edge technology.
+        </p>
+        <!-- <ul *ngIf="auth.user$ | async as user">
+          <li>{{ user.name }}</li>
+          <li>{{ user.email }}</li>
+          <li>{{ user. }}</li>
+        </ul> -->
+        <button class="Button2" mat-raised-button color="primary" (click)="openForm()">Book Appointment</button>
+      </div>
+    </div>
+  </mat-card>
+  <mat-card class="image-card  mat-card-no-shadow">
+    <div class="image">
+      <img src="https://inba-ng.hibotheme.com/assets/images/covid/banner.png" alt="Image">
+    </div>
+  </mat-card>
+</div>
+<mat-card class="mat-card-container-1 my-custom-background">
+  <div class="card-container-2">
+    <mat-card class="example-card mat-card-doctors shake-effect">
+      <mat-card-header>
+        <mat-card-title>
+          Doctors
+        </mat-card-title>
+        <!-- <mat-card-subtitle>Doctor Count</mat-card-subtitle> -->
+      </mat-card-header>
+      <mat-card-content>
+        <h1>{{doctorCount}}+</h1>
+        <p>Doctors´ Hospital is the crown of the efforts of a group of doctors to create a model, man-centered clinic. The aim of the clinic is to provide high-quality health services.</p>
+      </mat-card-content>
+      <mat-card-actions>
+      </mat-card-actions>
+      <mat-card-footer>
+        <!-- <mat-progress-bar mode="indeterminate"></mat-progress-bar> -->
+      </mat-card-footer>
+    </mat-card>
+    <mat-card class="example-card mat-card-patients shake-effect ">
+      <mat-card-header>
+        <!-- <div mat-card-avatar>
+            <mat-icon>person_pin</mat-icon>
+          </div> -->
+        <mat-card-title>Patient</mat-card-title>
+        <!-- <mat-card-subtitle>patient Count</mat-card-subtitle> -->
+      </mat-card-header>
+      <mat-card-content>
+        <h1>{{patientCount}}+</h1>
+        <p>A patient is any recipient of health care services that are performed by healthcare professionals. The patient is most often ill or injured and in need of treatment.</p>
+      </mat-card-content>
+      <mat-card-actions>
+      </mat-card-actions>
+      <mat-card-footer>
+        <!-- <mat-progress-bar mode="indeterminate"></mat-progress-bar> -->
+      </mat-card-footer>
+    </mat-card>
+    <mat-card class="example-card mat-card-nurses shake-effect">
+      <mat-card-header>
+        <mat-card-title>Nurses+</mat-card-title>
+        <!-- <mat-card-subtitle>Nurse Count</mat-card-subtitle> -->
+      </mat-card-header>
+      <mat-card-content>
+        <h1>{{nurseCount}}+</h1>
+        <p>Nurses are directly involved in almost all aspects of hospital quality, including patient care, bedside and medication management and more.</p>
+      </mat-card-content>
+      <mat-card-actions>
+      </mat-card-actions>
+      <mat-card-footer>
+      </mat-card-footer>
+    </mat-card>
+    <mat-card class="example-card mat-card-appointments shake-effect">
+      <mat-card-header>
+        <mat-card-title>Appointments</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <h1>{{appointmentCount}}+</h1>
+        <p>{{longText}}</p>
+      </mat-card-content>
+      <mat-card-actions>
+      </mat-card-actions>
+      <mat-card-footer>
+      </mat-card-footer>
+    </mat-card>
+  </div>
+  </mat-card>
+  <mat-card id="card" style="text-align: center; box-shadow: none; margin-top: 80px;" >
+    <mat-card-title style=" font-size: 45px; font-weight: bold;  box-shadow: none;">Our Services</mat-card-title>
+</mat-card>
+<div class="card-container">
+<mat-card class="card">
+  <img src="https://img.freepik.com/free-vector/characters-people-holding-healthcare-icons-illustration_53876-26831.jpg?w=826&t=st=1679863923~exp=1679864523~hmac=cf84c7a3cef07cbb235c132285c3e7ff23e7fc112951d8d12a546b78fb39166b" alt="Photo 1">
+  <mat-card-content>
+    <h2>Medicine Delivery</h2>
+    <p>With our online booking service, you can book your healthcare appointments and services at your convenience, without the hassle of phone calls or long wait times.</p>
+  </mat-card-content>
+</mat-card>
+<mat-card class="card">
+  <img src="https://img.freepik.com/free-vector/characters-people-holding-healthy-lifestyle-icons_53876-43011.jpg?w=900&t=st=1680976065~exp=1680976665~hmac=e451d1badc58d12ce200c2d9fb525b83c0dea1a3994e508937ab798ae3c09a26" alt="Photo 2">
+  <mat-card-content>
+    <h2>Health Care</h2>
+    <p>Healthcare services in India are cost-effective and. The low medical cost is makes people from all around the world  India for their treatment.</p>
+  </mat-card-content>
+</mat-card>
+<mat-card class="card">
+  <img src="https://img.freepik.com/free-vector/illustration-people-with-insurance-policy_53876-26675.jpg?w=826&t=st=1679863668~exp=1679864268~hmac=16625e68f045cbc53ccc040776f23f4ed6f8d12f2f44e3f2a1bb7a450210ddf9" alt="Photo 3">
+  <mat-card-content>
+    <h2>Insurance Policy</h2>
+    <p>Health Insurance is a type of insurance that covers the medical expenses of the insured  an illness or accident in exchange for a premium amount. </p>
+  </mat-card-content>
+</mat-card>
+<mat-card class="card">
+  <img src="https://img.freepik.com/free-vector/time-fitness-illsutration_53876-40778.jpg?w=900&t=st=1680974657~exp=1680975257~hmac=2828c4acd5cfaeddbfcd853050c306e96cfd3f79ccd3c098246cbfa8471aa115" alt="Photo 4">
+  <mat-card-content>
+    <h2>Fitness Gudience</h2>
+    <p>Fitness involves activity of some sort that stimulates various systems of the body and maintains a certain condition within the body.</p>
+  </mat-card-content>
+</mat-card>
+</div>
+<footer>
+  <div class="footer-container">
+    <div class="logo">
+      <img src="assets/images/logo2.png" alt="Logo" class="logo">
+    </div>
+    <div class="contact-info">
+      <h3>Contact Us</h3>
+      <p>123 Main Street</p>
+      <p>Anytown, India 12345</p>
+      <p>Phone: 123-456-7890</p>
+      <p>Email: help@pms.com</p>
+    </div>
+  </div>
+  <div class="bottom-bar">
+    <p>&copy; 2023 PMS . All rights reserved.</p>
+  </div>
+</footer>
+<router-outlet></router-outlet>
+
+  

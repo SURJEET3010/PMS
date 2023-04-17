@@ -1,0 +1,36 @@
+<div matDialogTitle style="color: #143ba8">
+  <h1>View Test details</h1>
+  <br />
+
+  <div mat-dialog-content class="content">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="testConducted">
+        <th mat-header-cell *matHeaderCellDef>Test conducted</th>
+        <td mat-cell *matCellDef="let element">{{ element.testName }}</td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="actual">
+        <th mat-header-cell *matHeaderCellDef>Actual result</th>
+        <td mat-cell *matCellDef="let element">{{ element.result }}</td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <!-- <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef> status </th>
+        <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+      </ng-container> -->
+      <ng-container matColumnDef="remarks">
+        <th mat-header-cell *matHeaderCellDef>remarks</th>
+        <td mat-cell *matCellDef="let element">{{ element.notes }}</td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+
+  <br />
+  <div mat-dialog-actions class="action">
+    <button mat-raised-button color="primary" matDialogClose>Close</button>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+
+#pTable{
+    padding: 100px;
+  }
+  .table-card {
+    border-radius: 5px;
+    padding: 20px; 
+    margin: 20px; 
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3); 
+    margin-left: 20px;
+  }
+  .active {
+    background-color: #f5f5f5;
+  }
+  
+
+
+button.mat-icon-button {
+  height: 24px; 
+  width: 24px;
+  font-size: 12px;
+}
+
+.table-header {
+  font-weight: bold;
+  text-align: center;
+}
+
+.mat-column-email,
+.mat-column-mobile,
+.mat-column-department,
+.mat-column-name {
+  flex: 1;
+  min-width: 20px;
+}
+
+.mat-column-email {
+  flex-basis: 150px;
+}
+
+.mat-column-department {
+  flex-basis: 100px;
+}
+
+.mat-cell,
+.mat-header-cell {
+  text-align: center;
+}
+
+.mat-header-row,
+.mat-row {
+  align-items: center;
+}
+

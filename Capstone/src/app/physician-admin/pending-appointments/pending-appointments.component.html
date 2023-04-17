@@ -1,0 +1,68 @@
+
+<mat-card class="rounded-card">
+    <mat-card-content class="card-content">
+    
+      <mat-card-header>
+        <mat-card-title>
+          List of All Appointments
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card class="table-card">
+         <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+    </mat-form-field>
+<mat-table #table [dataSource]="dataSource" matSort class="mat-cell" id="ptable">
+  <ng-container matColumnDef="select">
+    <mat-header-cell *matHeaderCellDef>
+     
+    </mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      
+    </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="appointmentId">
+      <mat-header-cell *matHeaderCellDef mat-sort-header  class="table-header">Appointment Id</mat-header-cell>
+      <mat-cell *matCellDef="let row" class="square-box"> {{row.appointmentId}}</mat-cell>
+    </ng-container>
+  <ng-container matColumnDef="patientId">
+    <mat-header-cell *matHeaderCellDef mat-sort-header  class="table-header">Patient Id</mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.patientId}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="patientName">
+    <mat-header-cell *matHeaderCellDef mat-sort-header  class="table-header">Patient Name</mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.patientName}}</mat-cell>
+  </ng-container>
+ 
+    <ng-container matColumnDef="date">
+      <mat-header-cell *matHeaderCellDef mat-sort-header  class="table-header">Appointment Date</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.appointmentDate}}</mat-cell>
+    </ng-container>
+
+     <ng-container matColumnDef="reason">
+      <mat-header-cell *matHeaderCellDef mat-sort-header  class="table-header">Reason</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.reason}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="submissionDate">
+    <mat-header-cell *matHeaderCellDef mat-sort-header  class="table-header">Submission Date</mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.submissionDate}}</mat-cell>
+  </ng-container> 
+
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef class="table-header">Actions</mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <button mat-raised-button color="primary" (click)="updateAppointment(row.appointmentId,row.patientId)">Accept</button> &nbsp; &nbsp;
+      <button mat-raised-button color="warn" (click)="deleteAppointment(row.appointmentId,row.patientId)">Reject</button>
+      </mat-cell>
+    </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 50]" showFirstLastButtons></mat-paginator>
+</mat-card>
+  
+
+      

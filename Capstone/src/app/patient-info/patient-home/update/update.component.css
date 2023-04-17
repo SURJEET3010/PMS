@@ -1,0 +1,39 @@
+.full-width {
+    width: 100%;
+    margin-right: 20px;
+    border-radius: 30px;
+    box-shadow:rgb(0, 0, 0) ;
+  }
+  
+  .shipping-card {
+    min-width: 80px;
+    max-width: 100%;
+    margin: 40px 40px;
+    border-radius: 10px;
+  }
+  
+  .mat-radio-button {
+    display: block;
+    margin: 10px 0;
+  }
+  
+  .row {
+    display: flex;
+    flex-direction: row;
+    width:auto;
+    height: 1%;
+    justify-content: space-between;
+    align-items: center;
+    width: auto;
+    height: 1%;
+  }
+  
+  .col {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  .col:last-child {
+    margin-right: 0;
+  }
+  

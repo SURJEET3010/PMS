@@ -1,0 +1,115 @@
+<form [formGroup]="visitForm" class="form-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Visit Details</mat-card-title>
+    </mat-card-header>
+    <mat-dialog-content class="mat-typography">
+      <div class="row">
+        <mat-form-field appearance="outline" style="width: 45%">
+          <mat-label>Height</mat-label>
+          <input formControlName="height" 
+          matInput 
+          placeholder="in cm"
+          type="number" min="30" max="250" step="0.1" />
+        </mat-form-field>
+
+        <mat-form-field
+          appearance="outline"
+          style="margin-left: 7%; width: 45%"
+        >
+          <mat-label>Weight</mat-label>
+          <input formControlName="weight" 
+          matInput 
+          placeholder="in Kg"
+          type="number" />
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field appearance="outline" style="width: 45%">
+          <mat-label>Blood Group</mat-label>
+          <mat-select formControlName="bloodGroup">
+            <mat-option
+              *ngFor="let bloodGroup of bloodGroupList"
+              [value]="bloodGroup"
+              >{{ bloodGroup }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field
+          appearance="outline"
+          style="margin-left: 7%; width: 45%"
+        >
+          <mat-label>Add Allergy</mat-label>
+          <mat-select multiple formControlName="allergy">
+            <mat-option *ngFor="let allergy of allergyList" [value]="allergy">{{
+              allergy
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field appearance="outline" style="width: 45%">
+          <mat-label>Body Temperature</mat-label>
+          <input
+            formControlName="bodyTemperature"
+            matInput
+            placeholder="in Farenheit"
+            type="number" min="90" max="110" step="0.1"
+          />
+        </mat-form-field>
+        <mat-form-field
+          appearance="outline"
+          style="margin-left: 7%; width: 45%"
+        >
+          <mat-label>Respiration Rate</mat-label>
+          <input
+            formControlName="respirationRate"
+            matInput
+            placeholder="Respiration Rate"
+            type="number" min="5" max="60" step="0.1"  />
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field appearance="outline" style="width: 45%">
+          <mat-label>Systolic Blood Pressure</mat-label>
+          <input
+            formControlName="bpSystollic"
+            matInput
+            placeholder="Systolic Blood Pressure"
+            type="number" min="60" max="220" step="1"
+          />
+        </mat-form-field>
+
+        <mat-form-field
+          appearance="outline"
+          style="margin-left: 7%; width: 45%"
+        >
+          <mat-label>Diastolic Blood Pressure</mat-label>
+          <input
+            formControlName="bpDiastolic"
+            matInput
+            placeholder="Diastolic Blood Pressure"
+            type="number" min="40" max="140" step="1"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-sm-6">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Key Notes for Doctor</mat-label>
+          <textarea
+            formControlName="keyNotes"
+            matInput
+            placeholder="Key Notes for Doctor"
+          ></textarea>
+        </mat-form-field>
+      </div>
+    </mat-dialog-content>
+    <mat-card-actions [align]="'end'">
+      <button mat-raised-button color="primary" (click)="saveVisit()">
+        Save
+      </button>
+    </mat-card-actions>
+    
+  </mat-card>
+</form>

@@ -1,0 +1,91 @@
+<div
+  matDialogTitle
+  style="color: #143ba8; font-weight: 800; font-size: x-large"
+>
+  <h1>Add Prescription Details</h1>
+
+  <br />
+</div>
+
+<form (ngSubmit)="addPrescription()">
+  <div mat-dialog-content class="content">
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Medicine*</mat-label>
+        <input
+          matInput
+          placeholder="Name of Medicine"
+          [(ngModel)]="pForm.prescriptionName"
+          name="prescriptionName"
+        /> </mat-form-field
+      ><ng-container matColumnDef="prescriptionName">
+        <th mat-header-cell *matHeaderCellDef>Prescription Name</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.prescriptionName }}
+        </td>
+      </ng-container>
+
+      <div class="row">
+        <mat-form-field appearance="outline">
+          <mat-label>Dose*</mat-label>
+          <input
+            matInput
+            placeholder="20 ml"
+            name="dosage"
+            [(ngModel)]="pForm.dosage"
+          /> </mat-form-field
+        ><ng-container matColumnDef="dosage">
+          <th mat-header-cell *matHeaderCellDef>Prescription Name</th>
+          <td mat-cell *matCellDef="let element">{{ element.dosage }}</td>
+        </ng-container>
+
+        <div>
+          <div class="row">
+            <mat-form-field appearance="outline">
+              <mat-label>Notes*</mat-label>
+              <input
+                matInput
+                placeholder="Before/After the meal"
+                name="notes"
+                [(ngModel)]="pForm.notes"
+              /> </mat-form-field
+            ><ng-container matColumnDef="notes">
+              <th mat-header-cell *matHeaderCellDef>Prescription Name</th>
+              <td mat-cell *matCellDef="let element">{{ element.notes }}</td>
+            </ng-container>
+          </div>
+
+          <br />
+          <div mat-dialog-actions class="action">
+            <!-- <button mat-raised-button color="primary" (click) ="addPrescription()" >Save</button> -->
+
+            <button mat-raised-button color="primary" type="submit">
+              Save
+            </button>
+            <button mat-raised-button color="Warn" matDialogClose>
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<!-- <div>
+  <label for="visitId">Visit ID:</label>
+  <input type="text" id="visitId" [(ngModel)]="visitId">
+</div>
+<div>
+  <label for="medication">Medication:</label>
+  <input type="text" id="medication" [(ngModel)]="prescriptionDetails.medication">
+</div>
+<div>
+  <label for="dosage">Dosage:</label>
+  <input type="text" id="dosage" [(ngModel)]="prescriptionDetails.dosage">
+</div>
+<div>
+  <label for="frequency">Frequency:</label>
+  <input type="text" id="frequency" [(ngModel)]="prescriptionDetails.frequency">
+</div>
+<button (click)="addPrescription()">Save</button> -->
