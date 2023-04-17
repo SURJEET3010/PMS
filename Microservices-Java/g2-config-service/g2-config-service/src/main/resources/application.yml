@@ -1,0 +1,42 @@
+# --------:> General Configuration
+server:
+  port: 9000
+spring:
+  application:
+    name: g2-config-service
+# --------:> Consul Configuration
+  cloud:
+    config:
+      fail-fast: false
+      server:
+        git:
+          uri: https://github.com/NoorullahAnsari/config-files
+          skipSslValidation: true
+          clone-on-start: true
+    consul:
+      host: localhost
+      port: 8500
+      enabled: true  #  Enable Spring Cloud Consul Config
+      discovery:
+        instanceId: ${spring.application.name}:${server.port} # or instanceId: ${spring.application.name}:${random.value}
+        healthCheckInterval: 12s   # Default 10seconds
+  devtools:
+    add-properties: false  # To supress WARING in Spring log
+
+# --------:> Logging Configuration
+logging:
+  level:
+    web: INFO   
+
+# --------:> Actuator Configuration
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+        
+# ==================================================
+# Check the below URL to test Config Server:
+# http://localhost:9001/microservice-one/default
+# ==================================================        
